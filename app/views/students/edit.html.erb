@@ -4,7 +4,10 @@
   <%= form.text_field :last_name,  placeholder: "Last name"%>
   <%= form.text_field :age,  placeholder: "Age"%>
   <%= form.text_field :education, placeholder: "Education" %>
-  <%= form.hidden_field :cohort_id, value: 1 %>
+  <%= form.hidden_field :cohort_id, value: 2 %>
 
   <%= form.submit %>
+
+  <%= link_to "Delete", @student, method: :delete,
+                                  data: { confirm: "You sure?" } %>
 <% end %>

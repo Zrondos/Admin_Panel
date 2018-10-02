@@ -4,8 +4,10 @@ Rails.application.routes.draw do
 
   resources :students
 
-  get '/instructors', to:  'instructors#index'
+  resources :courses
 
-  get '/courses', to: 'courses#index'
+  resources :instructors
+
+  resources :cohorts
 
 end

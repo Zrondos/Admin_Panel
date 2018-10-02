@@ -1,6 +1,11 @@
 <h1>List of Students</h1>
 <% @students.each do |student| %>
-<%= student.first_name%>
-<%= student.last_name%>
-<%= student.cohort.name%>
+Name:<%= student.first_name%> <%= student.last_name%> <br>
+    <% student.cohorts.each do |cohort| %>
+    <br>
+        Cohort: <%= cohort.name %><br>
+        Instructor: <%= cohort.instructor.first_name%> <%= cohort.instructor.last_name%> <br> 
+    <% end %>
+    <br><br><br>
+    <hr>
 <% end %>

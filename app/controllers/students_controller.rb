@@ -13,7 +13,7 @@ class StudentsController < ApplicationController
         last_name: params[:student][:last_name], 
         age: params[:student][:age] ,
         education: params[:student][:education],
-        cohort_id: params[:student][:cohort_id]
+        cohort_id: nil
         )
         redirect_to '/students'
     end
@@ -35,6 +35,11 @@ class StudentsController < ApplicationController
         cohort_id: params[:student][:cohort_id]
         )
         redirect_to student_path(@student.id)
+    end
+
+    def destroy
+        @student=Student.find(params[:id])
+        @student.destroy
     end
 
 end

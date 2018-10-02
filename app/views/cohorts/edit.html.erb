@@ -1,0 +1,10 @@
+<%= @cohort.name%>
+<p>Add a teacher by id</p>
+<% @instructors.each do |instructor| %>
+    <%= instructor.first_name %>
+    <%= instructor.id %>
+<% end %>
+<%= form_with model: @cohort do |form| %>
+  <%= form.text_field :instructor_id,  placeholder: "Instructor ID"%>
+  <%= form.submit %>
+<% end %>

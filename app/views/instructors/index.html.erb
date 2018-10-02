@@ -1,5 +1,6 @@
 <h1>List of Instructors</h1>
 <% @instructors.each do |instructor| %>
 <%= instructor.first_name %>
-<%= instructor.last_name %>
+<%= instructor.last_name %><br>
+Cohort: <%= instructor.cohort.name%><br><br>
 <% end %>

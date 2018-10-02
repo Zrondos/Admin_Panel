@@ -1,5 +1,14 @@
 <h1>List of Courses</h1>
     <% @courses.each do |course| %>
-        <%= course.name %>
-        <%= course.hours %>
+        <%= course.name %><br>
+        <%= course.hours %><br>
+    <h2>Cohorts</h2>
+    <% course.cohorts.each do |cohort| %>
+        Cohort Name: <%= cohort.name%><br>
+        Cohort Instructor: <%= cohort.instructor.first_name %> <%= cohort.instructor.last_name%><br>
+        Students: <% cohort.students.each do |student| %>
+            <%= student.first_name%> <%= student.last_name %> <br>
+        <% end %>
+        <br>
     <% end %>
+<% end %>

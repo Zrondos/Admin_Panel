@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_01_181036) do
+ActiveRecord::Schema.define(version: 2018_10_02_000648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,10 +19,9 @@ ActiveRecord::Schema.define(version: 2018_10_01_181036) do
     t.string "name"
     t.datetime "start_date"
     t.datetime "end_date"
-    t.bigint "course_id"
+    t.integer "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["course_id"], name: "index_cohorts_on_course_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -38,10 +37,9 @@ ActiveRecord::Schema.define(version: 2018_10_01_181036) do
     t.integer "age"
     t.integer "salary"
     t.string "education"
-    t.bigint "cohort_id"
+    t.integer "cohort_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cohort_id"], name: "index_instructors_on_cohort_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -49,10 +47,16 @@ ActiveRecord::Schema.define(version: 2018_10_01_181036) do
     t.string "last_name"
     t.integer "age"
     t.string "education"
-    t.bigint "cohort_id"
+    t.integer "cohort_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cohort_id"], name: "index_students_on_cohort_id"
+  end
+
+  create_table "students_cohorts", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "cohort_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
