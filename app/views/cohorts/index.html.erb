@@ -1,8 +1,7 @@
-<%@cohorts.each do |cohort|%>
+<% @cohorts.each do |cohort|%>
     Cohort: <%= cohort.name %><br>
         Instructor: Professor <%= cohort.instructor.last_name %><br>
-
-    Students<br>
+    <strong>Students</strong><br>
     <% cohort.students.each do |student|%>
         <%= student.first_name %><br>
     <% end%><br>

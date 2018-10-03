@@ -1,10 +1,16 @@
 <%= @cohort.name%>
-<p>Add a teacher by id</p>
-<% @instructors.each do |instructor| %>
-    <%= instructor.first_name %>
-    <%= instructor.id %>
-<% end %>
+
 <%= form_with model: @cohort do |form| %>
-  <%= form.text_field :instructor_id,  placeholder: "Instructor ID"%>
+  <%= form.text_field :name,  placeholder: "Cohort Name"%>
+  <%= form.date_field :start_date,  placeholder: "Start date"%>
+  <%= form.date_field :end_date,  placeholder: "End date"%>
+  <%= form.select :course_id,  options_for_select(@courses, @cohort.course_id)%>
+
   <%= form.submit %>
+<% end %>
+<%= link_to "Delete", @cohort, method: :delete, data: { confirm: "You sure?" } %>
+
+<h2>Course Options and ID</h2>
+<% @courses.each do |course| %>
+  <%= course.name %>   <%= course.id%><br>
 <% end %>

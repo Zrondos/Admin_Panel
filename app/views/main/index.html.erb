@@ -1,0 +1,29 @@
+<h2>Welcome</h2>
+
+<div class="courses_container main">
+    <h3>Courses</h3>
+    <% @courses.each do |course| %>
+        <p> <%= course.name %> </p>
+    <% end %>
+</div>
+
+<div class="cohorts_container main">
+    <h3>Cohorts</h3>
+    <% @cohorts.each do |cohort| %>
+        <p> <%= cohort.name %> </p>
+    <% end %>
+</div>
+
+<div class="instructors_container main">
+    <h3>Instructors</h3>
+    <% @instructors.each do |instructor| %>
+        <p> <%=instructor.first_name %> <%= instructor.last_name %> </p>
+    <% end %>
+</div>
+
+<div class="students_container main">
+    <h3>Students</h3>
+    <% @students.each do |student| %>
+        <p> <%= student.first_name %> <%= student.last_name %> </p>
+    <% end %>
+</div>

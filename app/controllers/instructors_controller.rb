@@ -5,6 +5,7 @@ class InstructorsController < ApplicationController
 
     def new
         @instructor = Instructor.new
+        @cohorts=Cohort.all.map{|c| [c.name, c.id]}
     end
 
     def create
@@ -18,4 +19,27 @@ class InstructorsController < ApplicationController
         )
         redirect_to '/instructors'
     end
+
+    def edit
+        @instructor = Instructor.find(params[:id])
+        @cohorts = Cohort.all
+    end
+
+    def update
+        @instructor = Instructor.find(params[:id])
+        @instructor.update(
+            first_name: params[:instructor][:first_name],
+            last_name: params[:instructor][:last_name],
+            age: params[:instructor][:age],
+            salary: params[:instructor][:salary],
+            education: params[:instructor][:education],
+            cohort_id: params[:instructor][:cohort_id]
+        )
+    end
+
+    def destroy
+        @instructor=Instructor.find(params[:id])
+        @instructor.destroy
+    end
+
 end

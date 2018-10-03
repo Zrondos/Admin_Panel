@@ -16,4 +16,22 @@ class CoursesController < ApplicationController
         redirect_to '/courses'
     end
 
+    def edit
+        @course=Course.find(params[:id])
+    end
+
+    def update
+        @course=Course.find(params[:id])
+        @course.update(name: params[:course][:name],
+        hours: params[:course][:hours]
+        )
+        redirect_to '/courses'
+    end
+
+    def destroy
+        @course=Course.find(params[:id])
+        @course.destroy
+        redirect_to '/courses'
+    end
+
 end

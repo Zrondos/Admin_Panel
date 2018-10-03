@@ -1,3 +1,5 @@
+<%= @instructor.first_name %> <%= @instructor.last_name %><br>
+
 <%= form_with model: @instructor do |form| %>
   <%= form.text_field :first_name,  placeholder: "First name"%>
   <%= form.text_field :last_name,  placeholder: "Last name"%>
@@ -9,5 +11,11 @@
 
 
   <%= form.submit %>
-  
+  <%= link_to "Delete", @instructor, method: :delete, data: { confirm: "You sure?" } %>
+
+<% end %>
+
+
+<% @cohorts.each do |cohort| %>
+    <%= cohort.name%>: <%= cohort.id%><br>
 <% end %>

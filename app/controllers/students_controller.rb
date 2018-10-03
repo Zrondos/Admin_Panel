@@ -12,9 +12,9 @@ class StudentsController < ApplicationController
         @student=Student.create(first_name: params[:student][:first_name],
         last_name: params[:student][:last_name], 
         age: params[:student][:age] ,
-        education: params[:student][:education],
-        cohort_id: nil
+        education: params[:student][:education]
         )
+
         redirect_to '/students'
     end
 

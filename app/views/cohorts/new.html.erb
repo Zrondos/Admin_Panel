@@ -1,11 +1,9 @@
-<% @courses.each do |course|%>
-<p><%= course.name%> : <%=course.id%> </p>
-<% end %>
+
 <%= form_with model: @cohort do |form| %>
   <%= form.text_field :name,  placeholder: "Cohort Name"%>
   <%= form.date_field :start_date,  placeholder: "Start date"%>
   <%= form.date_field :end_date,  placeholder: "End date"%>
-  <%= form.text_field :course_id, placeholder: "Course Number" %>
+  <%= form.select :course_id,  options_for_select(@courses, @cohort.course_id)%>
 
   <%= form.submit %>
 <% end %>
