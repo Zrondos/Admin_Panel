@@ -1,6 +1,8 @@
 class CohortsController < ApplicationController
     def index
-        @cohorts=Cohort.all
+        @cohorts=Cohort.all.order('created_at ASC')
+        @cohort=Cohort.new
+        @courses=Course.all.map{ |c| [c.name, c.id]}
     end
 
     def new
@@ -20,6 +22,7 @@ class CohortsController < ApplicationController
             @instructors=Instructor.all
             @cohort=Cohort.find(params[:id])
             @courses=Course.all
+            @students=Student.all.map{|s| [s.first_name, s.id] }
     end
 
     def show

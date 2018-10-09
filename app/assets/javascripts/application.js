@@ -14,3 +14,47 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+function displayCourse(course_id){
+    var x = document.getElementsByClassName("course_view");
+    var i;
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    // document.getElementsByClassName('course_view').style.display="none";
+    course_id="course_"+course_id
+    to_edit=document.getElementById(course_id);
+    to_edit.style.display="block"
+}
+
+function displayCohort(cohort_id){
+    var x = document.getElementsByClassName("cohort_view");
+    var i;
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    new_cohort_id="cohort_"+cohort_id
+    to_edit=document.getElementById(new_cohort_id);
+    to_edit.style.display="block"
+
+    var y = document.getElementsByClassName("students_cohorts_view");
+    var j;
+    for (j = 0; j < y.length; j++) {
+        y[j].style.display = "none";
+    }
+    students_cohorts_id="students_cohorts_"+cohort_id
+    students_to_edit=document.getElementById(students_cohorts_id);
+    students_to_edit.style.display="block"
+}
+
+function displayInstructor(instructor_id){
+    var x = document.getElementsByClassName("instructor_view");
+    var i;
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    instructor_id="instructor_"+instructor_id
+    to_edit=document.getElementById(instructor_id);
+    to_edit.style.display="block"
+}
+

@@ -1,6 +1,8 @@
 class InstructorsController < ApplicationController
     def index
-        @instructors = Instructor.all
+        @instructors = Instructor.all.order('created_at ASC')
+        @instructor = Instructor.new
+        @cohorts=Cohort.all.map{|c| [c.name, c.id]}
     end
 
     def new
@@ -16,6 +18,7 @@ class InstructorsController < ApplicationController
             salary: params[:instructor][:salary],
             education: params[:instructor][:education],
             cohort_id: params[:instructor][:cohort_id]
+            
         )
         redirect_to '/instructors'
     end

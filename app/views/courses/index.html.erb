@@ -1,14 +1,35 @@
+<div class="courses_container">
+<div class="all_courses">
 <h1>List of Courses</h1>
     <% @courses.each do |course| %>
+        <button type="button" onclick="displayCourse(<%=course.id%>)"> View </button>
         <%= course.name %><br>
-        <%= course.hours %><br>
-    <h2>Cohorts</h2>
-    <% course.cohorts.each do |cohort| %>
-        Cohort Name: <%= cohort.name%><br>
-        Cohort Instructor: <%= cohort.instructor.first_name %> <%= cohort.instructor.last_name%><br>
-        Students: <% cohort.students.each do |student| %>
-            <%= student.first_name%> <%= student.last_name %> <br>
-        <% end %>
-        <br>
-    <% end %>
 <% end %>
+<h2>Create New Course</h2>
+<%= form_with model: Course.new do |form| %>
+  Course: <%= form.text_field :name,  placeholder: "Course Name"%><br>
+  Hours: <%= form.text_field :hours,  placeholder: "Hours"%><br>
+  
+  <%= form.submit %>
+<% end %>
+</div>
+
+<div class="edit_courses">
+<h2>Edit Course</h2>
+<% @courses.each do |course| %>
+    <div class="course_view" id="course_<%=course.id%>">
+    <%= form_with model: course do |form| %>
+        Course Name: <%= form.text_field :name,  placeholder: "Course Name"%><br>
+        Hours: <%= form.text_field :hours,  placeholder: "Hours"%><br>
+    <%= form.submit %>
+    <% end %>
+  <!-- course_path(course.id) -->
+  <%= link_to "Delete", @course, method: :delete, data: { confirm: "You sure?" } %><br>
+  <%course.cohorts.each do |cohort|%>
+    <%= cohort.name %><br>
+  <% end %>
+    
+    </div>
+<% end %>
+</div>
+</div>

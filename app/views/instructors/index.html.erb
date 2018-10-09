@@ -1,6 +1,35 @@
 <h1>List of Instructors</h1>
 <% @instructors.each do |instructor| %>
+<button type="button" onclick="displayInstructor(<%=instructor.id%>)"> <%=instructor.last_name%> </button>
 <%= instructor.first_name %>
 <%= instructor.last_name %><br>
 Cohort: <%= instructor.cohort.name%><br><br>
+<% end %>
+
+<%= form_with model: Instructor.new do |form| %>
+  <%= form.text_field :first_name,  placeholder: "First name"%>
+  <%= form.text_field :last_name,  placeholder: "Last name"%>
+  <%= form.text_field :age,  placeholder: "Age" %>
+  <%= form.text_field :salary, placeholder: "Salary" %>
+  <%= form.label :education %>
+  <%= form.select :education, ['Highschool','College', 'Masters', 'PHD']%>
+  <!-- <%= form.select :cohort_id, options_for_select(@cohorts, @instructor.id)%> -->
+  <%= form.submit %>
+  
+<% end %>
+
+<% @instructors.each do |instructor| %>
+<div class="instructor_view" id="instructor_<%=instructor.id%>">
+  <%= form_with model: instructor do |form| %>
+    <%= form.text_field :first_name,  placeholder: "First name"%>
+    <%= form.text_field :last_name,  placeholder: "Last name"%>
+    <%= form.text_field :age,  placeholder: "Age" %>
+    <%= form.text_field :salary, placeholder: "Salary" %>
+    <%= form.label :education %>
+    <%= form.select :education, ['Highschool','College', 'Masters', 'PHD']%>
+    <%= form.select :cohort_id, options_for_select(@cohorts, instructor.id)%>
+    <%= form.submit %>
+  <%= link_to "Delete", instructor, method: :delete, data: { confirm: "You sure?" } %>
+<% end %>
+</div>
 <% end %>

@@ -13,6 +13,93 @@
  *= require_tree .
  *= require_self
  */
+
+/*Coruses*/
 .main{
     display: inline-block;
+}
+
+/*Course CSS*/
+.courses_container{
+    border: 2px solid black;
+}
+.course_view{
+    display: none;
+}
+#course_1{
+    display: block;
+}
+
+.all_courses{
+    display: inline-block;
+    border: 2px solid black;
+    border-bottom: none;
+    width: 50%;
+}
+
+.edit_courses{
+    display: inline-block;
+    border: 2px solid black;
+    border-bottom: none;
+    position: absolute;
+    margin-top: 0px;
+    width: 50%;
+}
+
+/*Cohort CSS */
+.cohorts_container{
+    border: 2px solid black;
+
+}
+.cohort_view{
+    display: none;
+}
+
+#cohort_1{
+    display: block;
+}
+.students_cohorts_view{
+    display: none;
+}
+
+#students_cohorts_1{
+    display: block;
+}
+
+.all_cohorts{
+    display: inline-block;
+    width: 33%;
+    height: 100%;
+    border: 2px solid black;
+    position: absolute;
+}
+
+.edit_cohorts{
+    display: inline-block;
+    border: 2px solid black;
+    width: 32%;
+    position: absolute;
+    top: 25px;
+    left: 443px;
+    height: 100%;
+
+}
+
+.enrolled_students{
+    display: inline-block;
+    border: 2px solid black;
+    width: 33%;
+    position: absolute;
+    right: 10px;
+    height: 100%;
+
+}
+
+
+
+
+/*Instructor CSS */
+.instructor_view{
+    height: 100px;
+    display: none;
 }

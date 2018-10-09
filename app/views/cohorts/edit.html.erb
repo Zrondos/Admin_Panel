@@ -10,7 +10,18 @@
 <% end %>
 <%= link_to "Delete", @cohort, method: :delete, data: { confirm: "You sure?" } %>
 
-<h2>Course Options and ID</h2>
+<h2>Add Students to Cohort</h2>
+<%= form_with model StudentsCohort.new %>
+<%= form.select(:students, [['Type A', 'Type A'],
+                                  ['Type B', 'Type B'],
+                                  ['Type C', 'Type C'],
+                                  ['Type D', 'Type D'],
+                                  ['Type E', 'Type E']
+                                 ],{ :prompt => "Please select"},
+                                   { :multiple => true, :size => 5 }
+                                 ) %>
+
+<!-- <h2>Course Options and ID</h2>
 <% @courses.each do |course| %>
   <%= course.name %>   <%= course.id%><br>
-<% end %>
+<% end %> -->

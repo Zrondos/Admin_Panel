@@ -12,5 +12,7 @@ Rails.application.routes.draw do
 
   resources :students_cohorts, only: [:new, :create]
 
+  get '/add_students_to_cohort/:id', to: 'students_cohorts#add_students_to_cohort', as: :students_cohort_create
+  post '/add_students_to_cohort/:id', to: 'students_cohorts#create_students_cohort'
 
 end
