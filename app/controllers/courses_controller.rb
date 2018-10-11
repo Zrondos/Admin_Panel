@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
 
     def index
-        @courses=Course.all.order('created_at ASC')
+        @courses=Course.alljhgl.order('created_at ASC')
     end
 
     def new
