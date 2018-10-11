@@ -31,7 +31,10 @@ class CoursesController < ApplicationController
     def destroy
         @course=Course.find(params[:id])
         @course.destroy
-        redirect_to '/courses'
+        respond_to do |format|
+            format.html {redirect_to courses_path}
+            format.js 
+        end
     end
 
 end

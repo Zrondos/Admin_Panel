@@ -1,35 +1,47 @@
-<h1>List of Instructors</h1>
-<% @instructors.each do |instructor| %>
-<button type="button" onclick="displayInstructor(<%=instructor.id%>)"> <%=instructor.last_name%> </button>
-<%= instructor.first_name %>
-<%= instructor.last_name %><br>
-Cohort: <%= instructor.cohort.name%><br><br>
-<% end %>
+<div class="instructors_container">
+  <div class="all_instructors">
+    <h1>List of Instructors</h1>
+        <% @instructors.each do |instructor| %>
+          <span id="button_<%=instructor.id%>">
+          <button type="button" onclick="displayInstructor(<%=instructor.id%>)"> View </button>
+          <%= instructor.first_name %>
+          <%= instructor.last_name %><br>
+          </span>
+        <% end %>
+    <!-- available_cohorts contains all the cohorts that do not have instructors -->
+      <% available_cohorts=[] %>
+      <% @cohorts.each do |cohort|%>
+        <% if Cohort.find(cohort[1]).instructor==nil %>
+          <% available_cohorts.push(cohort) %>
+        <% end %>
+      <% end %>
 
-<%= form_with model: Instructor.new do |form| %>
-  <%= form.text_field :first_name,  placeholder: "First name"%>
-  <%= form.text_field :last_name,  placeholder: "Last name"%>
-  <%= form.text_field :age,  placeholder: "Age" %>
-  <%= form.text_field :salary, placeholder: "Salary" %>
-  <%= form.label :education %>
-  <%= form.select :education, ['Highschool','College', 'Masters', 'PHD']%>
-  <!-- <%= form.select :cohort_id, options_for_select(@cohorts, @instructor.id)%> -->
-  <%= form.submit %>
-  
-<% end %>
+    <h2>Create New Instructor</h2>
+      <%= form_with model: Instructor.new do |form| %>
+            First Name:<%= form.text_field :first_name,  placeholder: "First name"%><br>
+            Last Name:<%= form.text_field :last_name,  placeholder: "Last name"%><br>
+            Birthday: <%= form.text_field :age,  placeholder: "Age" %><br>
+            Salary: <%= form.text_field :salary, placeholder: "Salary" %><br>
+            Education: <%= form.select :education, ['Highschool','College', 'Masters', 'PHD']%><br>
+            <%= form.select :cohort_id, options_for_select(available_cohorts, @instructor.id)%><br>
+            <%= form.submit "Create" %>
+      <% end %>
+    </div>
 
-<% @instructors.each do |instructor| %>
-<div class="instructor_view" id="instructor_<%=instructor.id%>">
-  <%= form_with model: instructor do |form| %>
-    <%= form.text_field :first_name,  placeholder: "First name"%>
-    <%= form.text_field :last_name,  placeholder: "Last name"%>
-    <%= form.text_field :age,  placeholder: "Age" %>
-    <%= form.text_field :salary, placeholder: "Salary" %>
-    <%= form.label :education %>
-    <%= form.select :education, ['Highschool','College', 'Masters', 'PHD']%>
-    <%= form.select :cohort_id, options_for_select(@cohorts, instructor.id)%>
-    <%= form.submit %>
-  <%= link_to "Delete", instructor, method: :delete, data: { confirm: "You sure?" } %>
-<% end %>
+    <div class = "edit_instructors">
+      <h2>View Instructor</h2>
+        <% @instructors.each do |instructor| %>
+          <div class="instructor_view" id="instructor_<%=instructor.id%>">
+            <%= form_with model: instructor do |form| %>
+              First Name:<%= form.text_field :first_name,  placeholder: "First name"%><br>
+              Last Name:<%= form.text_field :last_name,  placeholder: "Last name"%><br>
+              Date of Birth:<%= form.text_field :age,  placeholder: "Age" %><br>
+              Salary: <%= form.text_field :salary, placeholder: "Salary" %><br>
+              Education: <%= form.select :education, ['Highschool','College', 'Masters', 'PHD']%><br>
+              Cohort: <%= form.select :cohort_id, options_for_select(@cohorts, instructor.id)%><br>
+              <%= form.submit "Edit"%>
+              <%= link_to "Delete", instructor_path(instructor), method: :delete, remote: true, data: { confirm: "You sure?" } %><br>
+            <% end %>
+          </div>
+          <% end %>
 </div>
-<% end %>

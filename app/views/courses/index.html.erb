@@ -1,35 +1,36 @@
 <div class="courses_container">
-<div class="all_courses">
-<h1>List of Courses</h1>
-    <% @courses.each do |course| %>
+  <div class="all_courses">
+    <h1>List of Courses</h1>
+      <% @courses.each do |course| %>
+        <span id="button_<%=course.id%>">
         <button type="button" onclick="displayCourse(<%=course.id%>)"> View </button>
         <%= course.name %><br>
-<% end %>
-<h2>Create New Course</h2>
-<%= form_with model: Course.new do |form| %>
-  Course: <%= form.text_field :name,  placeholder: "Course Name"%><br>
-  Hours: <%= form.text_field :hours,  placeholder: "Hours"%><br>
-  
-  <%= form.submit %>
-<% end %>
-</div>
+        </span>
+      <% end %>
+    <h2>Create New Course</h2>
+      <%= form_with model: Course.new do |form| %>
+        Course: <%= form.text_field :name,  placeholder: "Course Name"%> <br>
+        Hours: <%= form.text_field :hours,  placeholder: "Hours"%> <br>
+        <%= form.submit %>
+      <% end %>
+  </div>
 
-<div class="edit_courses">
-<h2>Edit Course</h2>
-<% @courses.each do |course| %>
-    <div class="course_view" id="course_<%=course.id%>">
-    <%= form_with model: course do |form| %>
-        Course Name: <%= form.text_field :name,  placeholder: "Course Name"%><br>
-        Hours: <%= form.text_field :hours,  placeholder: "Hours"%><br>
-    <%= form.submit %>
-    <% end %>
-  <!-- course_path(course.id) -->
-  <%= link_to "Delete", @course, method: :delete, data: { confirm: "You sure?" } %><br>
-  <%course.cohorts.each do |cohort|%>
-    <%= cohort.name %><br>
-  <% end %>
-    
-    </div>
-<% end %>
-</div>
+  <div class="edit_courses">
+    <h2>Edit Course</h2>
+      <% @courses.each do |course| %>
+        <div class="course_view" id="course_<%=course.id%>">
+          <%= form_with model: course do |form| %>
+            Course Name: <%= form.text_field :name,  placeholder: "Course Name"%><br>
+            Hours: <%= form.text_field :hours,  placeholder: "Hours"%><br>
+            <%= form.submit %>
+          <% end %> 
+          
+          <%= link_to "Delete", course_path(course), method: :delete, remote: true, data: { confirm: "You sure?" } %><br>
+          
+          <%course.cohorts.each do |cohort|%>
+            <%= cohort.name %><br>
+          <% end %>
+        </div>
+      <% end %>
+  </div>
 </div>

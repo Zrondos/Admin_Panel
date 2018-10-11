@@ -1,12 +1,72 @@
-<h1>List of Students</h1>
-<% @students.each do |student| %>
-Name:<%= student.first_name%> <%= student.last_name%> <br>
-    <!-- <% student.cohorts.each do |cohort| %>
-    <br>
-        Cohort: <%= cohort.name %><br>
-        Instructor: <%= cohort.instructor.first_name%> <%= cohort.instructor.last_name%> <br> 
-    <% end %>
-    <br><br><br> -->
-    <hr>
-<% end %>
+<div class="students_container">
+    <div class="all_students">
+        <h1>List of Students</h1>
+        <% @students.each do |student| %>
+        <span id="button_<%=student.id%>">
+            <button type="button" onclick="displayStudent(<%=student.id%>)"> View </button>
+            Name:<%= student.first_name%> <%= student.last_name%> <br>
+        <% end %>
+        <h1>Create New Student</h1>
+            <%= form_with model: Student.new do |form| %>
+                <%= form.text_field :first_name,  placeholder: "First name"%><br>
+                <%= form.text_field :last_name,  placeholder: "Last name"%><br>
+                <%= form.label :age %>
+                <%= form.date_select(:age, {order: [:month, :day, :year], start_year: Date.today.year-150, end_year: Date.today.year} ) %><br>
+                <%= form.label :education %>
+                <%= form.select :education, ['Highschool','College', 'Masters', 'PHD']%><br>
+                <%= form.submit %>
+            <% end %>
+    </div>
+
+    <div class="edit_students">
+        <h1>View Students</h1>
+            <% @students.each do |student| %>
+                <div class="student_view" id="student_<%=student.id%>">
+                    <h3><%=student.first_name%> <%=student.last_name%></h3>
+                    <%= form_with model: student do |form| %>
+                        <%= form.text_field :first_name,  placeholder: "First name"%><br>
+                        <%=form.text_field :last_name,  placeholder: "Last name"%><br>
+                        <%= form.label :age %>
+                        <%= form.date_select(:age, {order: [:month, :day, :year], start_year: Date.today.year-150, end_year: Date.today.year} ) %><br>
+                        <%= form.select :education, ['Highschool','College', 'Masters', 'PHD']%><br>
+                        <%= form.submit %>
+
+                        <%= link_to "Delete", student, method: :remove, data: { confirm: "You sure?" } %>
+                    <% end %>
+
+                    <h3>Add to Cohort</h3>
+                    <!-- cohorts_to_select shows all cohorts that the student is not enrolled in -->
+                        <% cohorts_to_select = @cohorts.dup %>
+                        <% student.cohorts.each do |cohort| %>
+                            <% for i in 0...cohorts_to_select.length-1 %>
+                                <% if cohort.id == cohorts_to_select[i][1] %>
+                                    <% cohorts_to_select.slice!(i) %>
+                                <% end %>
+                            <% end %>
+                        <% end %>
+                    <!----------------------------------------------------------->
+ 
+                        <%= form_with url:add_cohorts_students_path do |form| %>
+                            <%= form.select(:cohorts, options_for_select(cohorts_to_select), 
+                                   { :prompt => "Please select"},
+                                   { :multiple => true}
+                                 ) %>
+                            <%= form.hidden_field :student_id, value: student.id %>
+                            <%= form.submit %>
+                        <% end %>
+
+                <h4>Student's Cohorts</h4>
+                    <% student.cohorts.each do |cohort| %>
+                                <%= form_with url: url_for(action:'remove')  do |form| %>
+                                    <%= form.hidden_field :student_id, value: student.id %>
+                                    <%= form.hidden_field :cohort_id, value: cohort.id %>
+                                    <%= cohort.name%>
+                                    <%= form.submit "Remove from Cohort" %>
+                                <% end %><br>
+                    <% end %>
+                    </div> 
+            <% end %>
+          
+    </div>
+</div>
 

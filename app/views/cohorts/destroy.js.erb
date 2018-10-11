@@ -1,0 +1,10 @@
+
+let to_delete = document.getElementById('cohort_<%=@cohort.id%>')
+let delete_button = document.getElementById('button_<%=@cohort.id%>')
+let delete_also = document.getElementById('students_cohorts_<%=@cohort.id%>')
+let delete_this_too = document.getElementById('add_students_<%=@cohort.id%>')
+
+to_delete.style.display="none"
+delete_button.style.display="none"
+delete_also.style.display="none"
+delete_this_too.style.display="none"

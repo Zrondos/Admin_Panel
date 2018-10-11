@@ -20,14 +20,9 @@ class StudentsCohortsController < ApplicationController
     end
 
     def create_students_cohort
-        array=params[:students_cohort][:students_ids]
+        array=params[:create_students_cohort][:students_ids]
         array.map!(&:to_i)
-        puts '!!!!!!!!!!!!!!!'
-        puts '!!!!!!!!!!!!!!!'
-        puts array.to_s
         array=array[1..-1]
-        puts '!!!!!!!!'
-        puts array.to_s
         array.each do |student_id|
         StudentsCohort.create(
             student_id: student_id,
@@ -36,7 +31,19 @@ class StudentsCohortsController < ApplicationController
         end
     end
 
-
-
-
+    def create_cohorts_student
+        array=params[:cohorts]
+        array.map!(&:to_i)
+        array=array[1..-1]
+        array.each do |cohort_id|
+            puts cohort_id
+            puts params[:student_id]
+            puts "!!!!!!!!!!!!!!"
+            StudentsCohort.create(
+                cohort_id: cohort_id,
+                student_id: params[:student_id]  
+            )
+        end
+        redirect_to students_path
+    end
 end

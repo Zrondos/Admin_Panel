@@ -14,11 +14,16 @@
  *= require_self
  */
 
-/*Coruses*/
-.main{
-    display: inline-block;
-}
 
+nav{
+    border: 2px solid black;
+    margin-bottom: 10px;
+    background-image: linear-gradient(to bottom right, red, yellow);
+}
+.pokemon_academy{
+    width: 325px;
+    height: 75px;
+}
 /*Course CSS*/
 .courses_container{
     border: 2px solid black;
@@ -35,15 +40,18 @@
     border: 2px solid black;
     border-bottom: none;
     width: 50%;
+    height: 100%;
+    position: absolute;
 }
 
 .edit_courses{
     display: inline-block;
     border: 2px solid black;
-    border-bottom: none;
     position: absolute;
-    margin-top: 0px;
+    left: 675px;
+    top: 102px;
     width: 50%;
+    height: 100%;
 }
 
 /*Cohort CSS */
@@ -95,11 +103,76 @@
 
 }
 
+.unenrolled_students{
+    position: absolute;
+    top: 250px;
+    left: 875px;
+}
 
+.add_students_view{
+    display: none;
+} 
+
+#add_students_1{
+    display: block;
+}
 
 
 /*Instructor CSS */
+.instructor_container{
+    border: 2px solid black;
+}
 .instructor_view{
-    height: 100px;
     display: none;
+}
+
+#instructor_1{
+    display:block;
+}
+
+.all_instructors{
+    display: inline-block;
+    border: 2px solid black;
+    width: 50%;
+    height: 100%;
+    position: absolute;
+}
+
+.edit_instructors{
+    display: inline-block;
+    border: 2px solid black;
+    position: absolute;
+    left: 665px;
+    top: 26px;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/*Students CSS */
+
+.student_view{
+    display: none;
+}
+
+#student_1{
+    display: block;
+}
+
+.all_students{
+    display: inline-block;
+    border: 2px solid black;
+    width: 50%;
+    position: absolute;
+    height: 100%;
+}
+
+.edit_students{
+    display: inline-block;
+    border: 2px solid black;
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    left: 665px;
 }

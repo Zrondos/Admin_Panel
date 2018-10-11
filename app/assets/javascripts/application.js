@@ -45,6 +45,14 @@ function displayCohort(cohort_id){
     students_cohorts_id="students_cohorts_"+cohort_id
     students_to_edit=document.getElementById(students_cohorts_id);
     students_to_edit.style.display="block"
+
+    var z = document.getElementsByClassName("add_students_view");
+    var k;
+    for (k = 0; k < z.length; k++) {
+        z[k].style.display = "none";
+    }
+    students_cohorts_id="add_students_"+cohort_id
+    document.getElementById(students_cohorts_id).style.display="block"
 }
 
 function displayInstructor(instructor_id){
@@ -54,7 +62,15 @@ function displayInstructor(instructor_id){
         x[i].style.display = "none";
     }
     instructor_id="instructor_"+instructor_id
-    to_edit=document.getElementById(instructor_id);
-    to_edit.style.display="block"
+    document.getElementById(instructor_id).style.display="block"
 }
 
+function displayStudent(student_id){
+    var x = document.getElementsByClassName("student_view");
+    var i;
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    student_id="student_"+student_id
+    document.getElementById(student_id).style.display="block"
+}

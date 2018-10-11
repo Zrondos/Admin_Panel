@@ -1,7 +1,8 @@
 class StudentsController < ApplicationController
 
     def index
-        @students=Student.all
+        @students=Student.all.order('created_at ASC')
+        @cohorts=Cohort.all.map{|c| [c.name, c.id]}
     end
 
     def new
@@ -34,12 +35,16 @@ class StudentsController < ApplicationController
         education: params[:student][:education],
         cohort_id: params[:student][:cohort_id]
         )
-        redirect_to student_path(@student.id)
+        # redirect_to student_path(@student.id)
     end
 
-    def destroy
-        @student=Student.find(params[:id])
-        @student.destroy
+    def remove
+        to_remove=StudentsCohort.find_by(student_id: params[:student_id], cohort_id: params[:cohort_id])
+        to_remove.destroy
+        respond_to do |format|
+            format.html {redirect_to students_path}
+            format.js 
+        end
     end
 
 end

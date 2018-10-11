@@ -2,48 +2,75 @@
     <div class="all_cohorts">
         <h2>List of Cohorts</h2>
             <% @cohorts.each do |cohort|%>
+            <span id="button_<%=cohort.id%>">
                 <button type="button" onclick="displayCohort(<%=cohort.id%>)"> View </button>
                 <%= cohort.name %><br>
+            </span>
             <% end %>
         <h2>Create New Cohort</h2>
-        <%= form_with model: Cohort.new do |form| %>
-        Name: <%= form.text_field :name,  placeholder: "Cohort Name"%><br>
-        Start Date:<%= form.date_field :start_date,  placeholder: "Start date"%><br>
-        End Date:<%= form.date_field :end_date,  placeholder: "End date"%><br>
-        Course: <%= form.select :course_id,  options_for_select(@courses, @cohort.course_id)%><br>
-
-        <%= form.submit %>
-        <% end %>
+        
+            <%= form_with model: Cohort.new do |form| %>
+                Name: <%= form.text_field :name,  placeholder: "Cohort Name"%><br>
+                Start Date:<%= form.date_field :start_date,  placeholder: "Start date"%><br>
+                End Date:<%= form.date_field :end_date,  placeholder: "End date"%><br>
+                Course: <%= form.select :course_id,  options_for_select(@courses, @cohort.course_id)%><br>
+                <%= form.submit %>
+            <% end %>
     </div>
 
     <div class="edit_cohorts">
         <h1>View Cohorts</h1>
-        <% @cohorts.each do |cohort| %>
-            <div class="cohort_view" id="cohort_<%=cohort.id%>">
-                <h2><%=cohort.name%></h2>
-                <%= form_with model: cohort do |form| %>
-                    Name: <%= form.text_field :name,  placeholder: "Cohort Name"%><br>
-                    Start Date:<%= form.date_field :start_date,  placeholder: "Start date"%><br>
-                    End Date:<%= form.date_field :end_date,  placeholder: "End date"%><br>
-                    Course: <%= form.select :course_id,  options_for_select(@courses, @cohort.course_id)%><br>
+            <% @cohorts.each do |cohort| %>
+                <div class="cohort_view" id="cohort_<%= cohort.id %>">
+                    <h2><%= cohort.name %></h2>
+                        <%= form_with model: cohort do |form| %>
+                            Name: <%= form.text_field :name,  placeholder: "Cohort Name"%><br>
+                            Start Date:<%= form.date_field :start_date,  placeholder: "Start date"%><br>
+                            End Date:<%= form.date_field :end_date,  placeholder: "End date"%><br>
+                            Course: <%= form.select :course_id,  options_for_select(@courses, @cohort.course_id)%><br>
 
-                    <%= form.submit %>
-                <%= link_to "Delete", @cohort, method: :delete, data: { confirm: "You sure?" } %>
-                <% end %>
-            </div>
-        <% end %>
+                            <%= form.submit %>
+                        <!-- <%= link_to "Delete", @cohort, method: :delete, data: { confirm: "You sure?" } %> -->
+                            <%= link_to "Delete", cohort_path(cohort), method: :delete, remote: true, data: { confirm: "You sure?" } %><br>
+                        <% end %>
+                </div>
+            <% end %>
     </div>
     <div class="enrolled_students">
         <h2>Enrolled Students</h2>
-        <% @cohorts.each do |cohort| %>
-            <div class="students_cohorts_view" id="students_cohorts_<%=cohort.id%>">
-                    <%puts "!!!!!!!!!!!!!!!!!!!!!!!!!!"%>
-                    <%puts cohort.students %>
+            <% @cohorts.each do |cohort| %>
+                <div class="students_cohorts_view" id="students_cohorts_<%= cohort.id %>">
                     <% cohort.students.each do |student| %>
-                        <%=student.first_name%><%=student.last_name%><br>
+                        <%=student.first_name%> <%=student.last_name%><br>
                     <% end %>
-            </div>
-        <% end %>
+                </div>
+            <% end %>
     </div>
 
+    <div class="unenrolled_students">
+        <h2>Unenrolled Students</h2>
+            <!-- Students_to_select contains all the students that are not already enrolled in the chohort -->
+            <% @cohorts.each do |cohort| %>
+                <% students_to_select = @students.dup %>
+                <% cohort.students.each do |student| %>
+                    <% for i in 0...students_to_select.length-1 %>
+                        <% if student.id == students_to_select[i][1] %>
+                            <% students_to_select.slice!(i) %>
+                        <% end %>
+                    <% end %>
+                <% end %>
+
+                <div class="add_students_view" id="add_students_<%=cohort.id%>">
+                    <%= cohort.name %>
+                    <%= form_with url: url_for(action:'create_students_cohort')  do |form| %>
+                        <%= form.select(:students_ids, options_for_select(students_to_select), 
+                                { :prompt => "Please select"},
+                                { :multiple => true}
+                                ) %>
+                        <%= form.hidden_field :cohort_id, value: cohort.id %>
+                        <%= form.submit %>
+                    <% end %>
+                </div>
+            <% end %>
+    </div>   
 </div>
