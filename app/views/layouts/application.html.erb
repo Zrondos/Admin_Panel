@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Panel</title>
+    <title>Pokemon Academy</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,11 +9,10 @@
   </head>
   <nav>
     <%= image_tag "pokemon_academy.png", class:'pokemon_academy'%>
-    <%= link_to 'Courses', courses_path %>
-    <%= link_to 'Cohorts', cohorts_path %>
-    <%= link_to 'Instructors', instructors_path %>
-    <%= link_to 'Students', students_path %>
-
+      <%= link_to 'Courses', courses_path %>
+      <%= link_to 'Cohorts', cohorts_path %>
+      <%= link_to 'Instructors', instructors_path %>
+      <%= link_to 'Students', students_path %>
   </nav>
 
   <body>

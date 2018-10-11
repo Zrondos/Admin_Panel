@@ -9,7 +9,7 @@ class CoursesController < ApplicationController
     end
 
     def create
-        @course=Courasdfse.create(
+        @course=Course.create(
             name: params[:course][:name],
             hours: params[:course][:hours]
         )

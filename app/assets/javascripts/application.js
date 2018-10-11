@@ -15,6 +15,10 @@
 //= require turbolinks
 //= require_tree .
 
+// currentLinks = document.querySelectorAll('a[href="'+document.URL+'"]');
+// currentLinks.‌​forEach(function(link) {
+// link.className += ' current-link';})
+
 function displayCourse(course_id){
     var x = document.getElementsByClassName("course_view");
     var i;

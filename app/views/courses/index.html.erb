@@ -2,10 +2,12 @@
   <div class="all_courses">
     <h1>List of Courses</h1>
       <% @courses.each do |course| %>
-        <span id="button_<%=course.id%>">
-        <button type="button" onclick="displayCourse(<%=course.id%>)"> View </button>
-        <%= course.name %><br>
+        
+        <span id="button_<%=course.id%>"> 
+          <button type="button" class='no_border' onclick="displayCourse(<%=course.id%>)"> <%= image_tag 'pokeball_icon.png', class:"button_size" %> </button>
+          <%= course.name %><br>
         </span>
+        
       <% end %>
     <h2>Create New Course</h2>
       <%= form_with model: Course.new do |form| %>
@@ -16,21 +18,26 @@
   </div>
 
   <div class="edit_courses">
-    <h2>Edit Course</h2>
       <% @courses.each do |course| %>
         <div class="course_view" id="course_<%=course.id%>">
+          <h1> <%=course.name%> </h1>
           <%= form_with model: course do |form| %>
             Course Name: <%= form.text_field :name,  placeholder: "Course Name"%><br>
             Hours: <%= form.text_field :hours,  placeholder: "Hours"%><br>
             <%= form.submit %>
           <% end %> 
           
-          <%= link_to "Delete", course_path(course), method: :delete, remote: true, data: { confirm: "You sure?" } %><br>
-          
+          <button type='button'> <%= link_to "Delete", course_path(course), method: :delete, remote: true, data: { confirm: "You sure?" } %></button><br>
+          <h2>Cohorts</h2>
           <%course.cohorts.each do |cohort|%>
             <%= cohort.name %><br>
           <% end %>
         </div>
       <% end %>
+  </div>
+</div>
+
+<div class="test_container">
+  <div class="inner_container">
   </div>
 </div>
