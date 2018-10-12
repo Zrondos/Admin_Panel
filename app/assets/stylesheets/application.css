@@ -61,6 +61,14 @@ nav a {
 /*Course CSS*/
 .courses_container{
     border: 2px solid black;
+    position: relative;
+}
+
+.pikachu{
+    position: absolute;
+    z-index: -1;
+    margin-left: -300px;
+    bottom: -400px;
 }
 
 .course_view{
