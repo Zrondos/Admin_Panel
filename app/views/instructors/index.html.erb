@@ -1,9 +1,10 @@
+<%= image_tag 'pikachu.jpg', class:'pikachu'%>
 <div class="instructors_container">
   <div class="all_instructors">
     <h1>List of Instructors</h1>
         <% @instructors.each do |instructor| %>
           <span id="button_<%=instructor.id%>">
-          <button type="button" onclick="displayInstructor(<%=instructor.id%>)"> View </button>
+          <button type="button" class='no_border' onclick="displayInstructor(<%=instructor.id%>)"> <%= image_tag 'pokeball_icon.png', class:"button_size" %> </button>
           <%= instructor.first_name %>
           <%= instructor.last_name %><br>
           </span>
@@ -29,9 +30,10 @@
     </div>
 
     <div class = "edit_instructors">
-      <h2>View Instructor</h2>
+      <h1>View Instructor</h1>
         <% @instructors.each do |instructor| %>
           <div class="instructor_view" id="instructor_<%=instructor.id%>">
+            <h2><%=instructor.first_name%> <%=instructor.last_name%></h2>
             <%= form_with model: instructor do |form| %>
               First Name:<%= form.text_field :first_name,  placeholder: "First name"%><br>
               Last Name:<%= form.text_field :last_name,  placeholder: "Last name"%><br>
@@ -39,9 +41,10 @@
               Salary: <%= form.text_field :salary, placeholder: "Salary" %><br>
               Education: <%= form.select :education, ['Highschool','College', 'Masters', 'PHD']%><br>
               Cohort: <%= form.select :cohort_id, options_for_select(@cohorts, instructor.id)%><br>
-              <%= form.submit "Edit"%>
-              <%= link_to "Delete", instructor_path(instructor), method: :delete, remote: true, data: { confirm: "You sure?" } %><br>
+              <%= form.submit "Update"%><br>
+              <button type='button'> <%= link_to "Delete", instructor_path(instructor), method: :delete, remote: true, data: { confirm: "You sure?" } %></button><br>
             <% end %>
           </div>
           <% end %>
+    </div>
 </div>

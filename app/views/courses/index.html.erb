@@ -19,9 +19,10 @@
   </div>
 
   <div class="edit_courses">
+      <h1>View Course</h1>
       <% @courses.each do |course| %>
         <div class="course_view" id="course_<%=course.id%>">
-          <h1> <%=course.name%> </h1>
+          <h2> <%=course.name%> </h2>
           <%= form_with model: course do |form| %>
             Course Name: <%= form.text_field :name,  placeholder: "Course Name"%><br>
             Hours: <%= form.text_field :hours,  placeholder: "Hours"%><br>
@@ -30,15 +31,14 @@
           
           <button type='button'> <%= link_to "Delete", course_path(course), method: :delete, remote: true, data: { confirm: "You sure?" } %></button><br>
           <h2>Cohorts</h2>
-          <%course.cohorts.each do |cohort|%>
-            <%= cohort.name %><br>
-          <% end %>
+            <div class="list_of_cohorts">
+              <ol>
+              <%course.cohorts.each do |cohort|%>
+                <li><%= cohort.name %></li>
+              <% end %>
+              </ol>
+            </div>
         </div>
       <% end %>
-  </div>
-</div>
-
-<div class="test_container">
-  <div class="inner_container">
   </div>
 </div>
