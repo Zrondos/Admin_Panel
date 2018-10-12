@@ -81,11 +81,38 @@ body {
 
 .pokeball_gif{
     border:2px solid black;
-    zoom: 1.65;
+    zoom: 1.64;
     margin-left: -15px;
     position: absolute;
     z-index:-1;
+}
 
+.pikachu_gif{
+    position: absolute;
+    top: 350px;
+    left: 861px;
+}
+.gym_background{
+    z-index: -1;
+    zoom: 1.63;
+    position: absolute;
+    bottom: -68px;
+    right: 3px;
+}
+
+
+.welcome_container{
+    position: absolute;
+    font-family: 'VT323', monospace;
+    font-size: 40px;
+    top: 59px;
+}
+.statistics{
+    position: absolute;
+    font-family: 'VT323', monospace;
+    top: 150px;
+    left: 20px;
+    font-size: 30px;
 }
 /*Course CSS*/
 .courses_container{

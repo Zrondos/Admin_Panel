@@ -12,7 +12,7 @@
             <%= form_with model: Student.new do |form| %>
                 <%= form.text_field :first_name,  placeholder: "First name"%><br>
                 <%= form.text_field :last_name,  placeholder: "Last name"%><br>
-                <%= form.label :age %>
+                Birthday
                 <%= form.date_select(:age, {order: [:month, :day, :year], start_year: Date.today.year-150, end_year: Date.today.year} ) %><br>
                 <%= form.label :education %>
                 <%= form.select :education, ['Highschool','College', 'Masters', 'PHD']%><br>
