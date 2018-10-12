@@ -73,6 +73,20 @@ nav a {
 body {
     font-family: 'Montserrat', sans-serif;
 }
+
+.pokeball{
+    position:absolute;
+    z-index: 1;
+}
+
+.pokeball_gif{
+    border:2px solid black;
+    zoom: 1.65;
+    margin-left: -15px;
+    position: absolute;
+    z-index:-1;
+
+}
 /*Course CSS*/
 .courses_container{
     border: 2px solid black;
@@ -80,6 +94,7 @@ body {
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: stretch;
+    border-radius: 10px;
 }
 
 .course_view{
@@ -126,6 +141,7 @@ body {
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: stretch;
+    border-radius: 10px;
 }
 .cohort_view{
     display: none;
@@ -188,6 +204,7 @@ body {
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: stretch;
+    border-radius: 10px;
 }
 .instructor_view{
     display: none;
@@ -218,6 +235,7 @@ body {
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: stretch;
+    border-radius: 10px;
 }
 
 .student_view{

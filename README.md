@@ -1,24 +1,27 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+School Admin Panel
 
-Things you may want to cover:
+Full stack admin panel for a school administration to manage courses, cohorts, students, instructors.  Adminsitrator can perform all of the CRUD actions on these classes.  Classes are related via one_to_one, one_to_many and many_to_many relationships. 
 
-* Ruby version
+Technologies Used:
+	Front End: HTML, CSS, Javascript
+	Back End: Ruby, Rails, Javascript, PostgreSQL, ActiveRecord, Heroku
 
-* System dependencies
+Features:
+	Built on Ruby on Rails
+	ActiveRecord & PostgreSQL are used for database management
+	Ajax Call used to delete student profiles from system
+	CSS used for page styling and animations
+	Javascript used to modify page data without having to reload page
+	Filter features using Ruby for dymanic menu selection
+		I.e. Students already in a cohort do not show up on the student add menu for the specified cohort
 
-* Configuration
 
-* Database creation
+[Visit on Heroku](https://desolate-cliffs-98357.herokuapp.com/)
 
-* Database initialization
+Install
+	To run locally, clone repository onto local machine, run bundle install, then start rails server.
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...
