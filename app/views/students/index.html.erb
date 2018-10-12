@@ -5,7 +5,7 @@
         <% @students.each do |student| %>
         <span id="button_<%=student.id%>">
             <button type="button" class='no_border' onclick="displayStudent(<%=student.id%>)"> <%= image_tag 'pokeball_icon.png', class:"button_size" %> </button>
-            Name:<%= student.first_name%> <%= student.last_name%> <br>
+            <%= student.first_name%> <%= student.last_name%> <br>
         </span>
         <% end %>
         <h1>Create New Student</h1>

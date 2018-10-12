@@ -45,6 +45,7 @@ class StudentsController < ApplicationController
             format.html {redirect_to students_path}
             format.js 
         end
+        redirect_to students_path
     end
 
     def destroy

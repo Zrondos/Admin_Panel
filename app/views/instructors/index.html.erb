@@ -21,7 +21,7 @@
       <%= form_with model: Instructor.new do |form| %>
             First Name:<%= form.text_field :first_name,  placeholder: "First name"%><br>
             Last Name:<%= form.text_field :last_name,  placeholder: "Last name"%><br>
-            Age: <%= form.text_field :age,  placeholder: "Age" %><br>
+            Birthday: <%= form.date_select(:age, {order: [:month, :day, :year], start_year: Date.today.year-150, end_year: Date.today.year} ) %><br>
             Salary: <%= form.text_field :salary, placeholder: "Salary" %><br>
             Education: <%= form.select :education, ['Highschool','College', 'Masters', 'PHD']%><br>
             <%= form.select :cohort_id, options_for_select(available_cohorts, @instructor.id)%><br>
@@ -37,7 +37,7 @@
             <%= form_with model: instructor do |form| %>
               First Name:<%= form.text_field :first_name,  placeholder: "First name"%><br>
               Last Name:<%= form.text_field :last_name,  placeholder: "Last name"%><br>
-              Date of Birth:<%= form.text_field :age,  placeholder: "Age" %><br>
+              Date of Birth: <%= form.date_select(:age, {order: [:month, :day, :year], start_year: Date.today.year-150, end_year: Date.today.year} ) %><br>
               Salary: <%= form.text_field :salary, placeholder: "Salary" %><br>
               Education: <%= form.select :education, ['Highschool','College', 'Masters', 'PHD']%><br>
               Cohort: <%= form.select :cohort_id, options_for_select(@cohorts, instructor.id)%><br>
