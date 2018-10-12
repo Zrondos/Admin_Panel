@@ -88,9 +88,9 @@ body {
 }
 
 .pikachu_gif{
-    position: absolute;
-    top: 412px;
-    left: 982px;
+    position: relative;
+    top: 335px;
+    left: 910px;
 }
 .gym_background{
     z-index: -1;
