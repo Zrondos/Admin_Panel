@@ -1,5 +1,6 @@
 <%= form_with model: @course do |form| %>
   <%= form.text_field :name,  placeholder: "Course Name"%>
   <%= form.text_field :hours,  placeholder: "Hours"%>
+  <input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput">
   <%= form.submit %>
 <% end %>
