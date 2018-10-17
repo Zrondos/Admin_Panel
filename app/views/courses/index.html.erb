@@ -14,6 +14,7 @@
       <%= form_with model: Course.new do |form| %>
         Course: <%= form.text_field :name,  placeholder: "Course Name"%> <br>
         Hours: <%= form.text_field :hours,  placeholder: "Hours"%> <br>
+        <input type="file" accept="image/*" capture="camera" />
         <%= form.submit %>
       <% end %>
   </div>
