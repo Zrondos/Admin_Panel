@@ -66,7 +66,6 @@
                         <% end %>
                     <% end %>
                     
-
                     <div class="add_students_view" id="add_students_<%=cohort.id%>">
                         <%= form_with url: url_for(action:'create_students_cohort')  do |form| %>
                             <%= form.select(:students_ids, options_for_select(students_to_select), 
@@ -74,7 +73,7 @@
                                     { :multiple => true}
                                     ) %>
                             <%= form.hidden_field :cohort_id, value: cohort.id %>
-                            <%= form.submit %>
+                            <%= form.submit%>
                         <% end %>
                     </div>
                 <% end %>      

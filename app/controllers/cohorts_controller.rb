@@ -19,16 +19,16 @@ class CohortsController < ApplicationController
         redirect_to '/cohorts'
     end
 
-    def edit
-            @instructors=Instructor.all
-            @cohort=Cohort.find(params[:id])
-            @courses=Course.all
-            @students_cohorts=Student.all.map{|s| [s.first_name, s.id] }
-    end
+    # def edit
+    #         @instructors=Instructor.all
+    #         @cohort=Cohort.find(params[:id])
+    #         @courses=Course.all
+    #         @students_cohorts=Student.all.map{|s| [s.first_name, s.id] }
+    # end
 
-    def show
-        @cohort=Cohort.find(params[:id])
-    end
+    # def show
+    #     @cohort=Cohort.find(params[:id])
+    # end
 
     def update
         @cohort=Cohort.find(params[:id])
@@ -43,7 +43,6 @@ class CohortsController < ApplicationController
         @cohort=Cohort.find(params[:id])
         @cohort.destroy
         respond_to do |format|
-            format.html {redirect_to cohorts_path}
             format.js 
         end
     end
@@ -53,7 +52,6 @@ class CohortsController < ApplicationController
         array.map!(&:to_i)
         array=array[1..-1]
         array.each do |student_id|
-            puts student_id
         StudentsCohort.create(
             student_id: student_id,
             cohort_id: params[:cohort_id]

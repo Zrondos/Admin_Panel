@@ -16,10 +16,6 @@ class CoursesController < ApplicationController
         redirect_to '/courses'
     end
 
-    def edit
-        @course=Course.find(params[:id])
-    end
-
     def update
         @course=Course.find(params[:id])
         @course.update(name: params[:course][:name],

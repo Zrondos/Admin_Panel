@@ -1,6 +1,0 @@
-<%= form_with model: @students_cohorts do |form| %>
-  <%= form.select :student_id,  options_for_select(@students, @students_cohorts.student_id)%>
-  <%= form.select :cohort_id,  options_for_select(@cohorts, @students_cohorts.cohort_id)%>
-
-  <%= form.submit %>
-<% end %>

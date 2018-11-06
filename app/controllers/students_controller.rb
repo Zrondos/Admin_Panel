@@ -15,16 +15,7 @@ class StudentsController < ApplicationController
         age: params[:student][:age] ,
         education: params[:student][:education]
         )
-
         redirect_to '/students'
-    end
-
-    def show
-        @student=Student.find(params[:id])
-    end
-
-    def edit
-        @student=Student.find(params[:id])
     end
 
     def update

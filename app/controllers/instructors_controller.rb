@@ -18,14 +18,8 @@ class InstructorsController < ApplicationController
             salary: params[:instructor][:salary],
             education: params[:instructor][:education],
             cohort_id: params[:instructor][:cohort_id]
-            
         )
         redirect_to '/instructors'
-    end
-
-    def edit
-        @instructor = Instructor.find(params[:id])
-        @cohorts = Cohort.all
     end
 
     def update
