@@ -80,6 +80,21 @@ function displayStudent(student_id){
     document.getElementById(student_id).style.display="block"
 }
 
-
-
+function add_button(){
+    span=document.createElement("span")
+    //'course_<%=@course.id%>'
+    span.setAttribute("id","button_5")
+    to_append_to=document.getElementById("all_courses")
+    button=document.createElement("button")
+    button.setAttribute("type","button")
+    button.setAttribute("class","no_border")
+    button.setAttribute("onclick","displayCourse(5)")
+    image=document.createElement("img")
+    image.setAttribute("src","assets/pokeball_icon.png")
+    image.setAttribute("class","button_size")
+    button.appendChild(image)
+    span.appendChild(button)
+    span.innerHTML+="did it"
+    to_append_to.appendChild(span)
+}
 

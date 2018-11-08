@@ -128,7 +128,7 @@ body {
     display: none;
 }
 
-.all_courses{
+#all_courses{
     border-right: 2px solid black;
     width: 49%;
     padding-left: 10px;
@@ -146,7 +146,7 @@ body {
     background: none;
 }
 
-.edit_courses{
+#edit_courses{
 
     width: 45%;
     padding-left: 15px;
@@ -276,6 +276,6 @@ body {
     padding-bottom: 20px;
 }
 
-.first{
+.show{
     display: block;
 }

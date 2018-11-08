@@ -1,12 +1,16 @@
-$("#edit_courses").html("<%= escape_javascript(render partial: 'edit', locals: { course: @course } )%>");
-to_append_to=document.getElementbyId("all_courses")
-text=document.createElement("p")
-text.innerHTML=<%=@course.name%>
+document.getElementsByClassName("show")[0].style.display="none"
+$("#edit_courses").append("<%= escape_javascript("#{render partial: 'edit', locals: { course: @course }}").html_safe %>");
+span=document.createElement("span")
+span.setAttribute("id","button_<%=@course.id%>")
+to_append_to=document.getElementById("buttons")
 button=document.createElement("button")
 button.setAttribute("type","button")
 button.setAttribute("class","no_border")
+button.setAttribute("onclick","displayCourse(<%=@course.id%>)")
 image=document.createElement("img")
-image.setAttribute("src","pokeball_icon.png")
+image.setAttribute("src","assets/pokeball_icon.png")
 image.setAttribute("class","button_size")
-to_append_to.appendChild("image")
-to_append_to.appendChild("text")
+button.appendChild(image)
+span.appendChild(button)
+span.innerHTML+="<%=@course.name%>"
+to_append_to.appendChild(span)
