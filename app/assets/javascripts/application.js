@@ -25,10 +25,12 @@ function displayCourse(course_id){
     var i;
     for (i = 0; i < x.length; i++) {
         x[i].style.display = "none";
+        x[i].classList.remove("show");
     }
     // document.getElementsByClassName('course_view').style.display="none";
     course_id="course_"+course_id
     to_edit=document.getElementById(course_id);
+    to_edit.classList.add("show");
     to_edit.style.display="block"
 }
 
@@ -37,27 +39,34 @@ function displayCohort(cohort_id){
     var i;
     for (i = 0; i < x.length; i++) {
         x[i].style.display = "none";
+        x[i].classList.remove("show");
     }
     new_cohort_id="cohort_"+cohort_id
     to_edit=document.getElementById(new_cohort_id);
+    to_edit.classList.add("show");
     to_edit.style.display="block"
 
     var y = document.getElementsByClassName("students_cohorts_view");
     var j;
     for (j = 0; j < y.length; j++) {
         y[j].style.display = "none";
+        y[j].classList.remove("show");
     }
     students_cohorts_id="students_cohorts_"+cohort_id
     students_to_edit=document.getElementById(students_cohorts_id);
+    students_to_edit.classList.add("show")
     students_to_edit.style.display="block"
 
     var z = document.getElementsByClassName("add_students_view");
     var k;
     for (k = 0; k < z.length; k++) {
         z[k].style.display = "none";
+        z[k].classList.remove("show")
     }
     students_cohorts_id="add_students_"+cohort_id
-    document.getElementById(students_cohorts_id).style.display="block"
+    students_to_add=document.getElementById(students_cohorts_id)
+    students_to_add.classList.add("show")
+    students_to_add.style.display="block"
 }
 
 function displayInstructor(instructor_id){
@@ -65,9 +74,12 @@ function displayInstructor(instructor_id){
     var i;
     for (i = 0; i < x.length; i++) {
         x[i].style.display = "none";
+        x[i].classList.remove("show");
     }
     instructor_id="instructor_"+instructor_id
-    document.getElementById(instructor_id).style.display="block"
+    to_edit=document.getElementById(instructor_id)
+    to_edit.classList.add("show")
+    to_edit.style.display="block"
 }
 
 function displayStudent(student_id){
@@ -78,23 +90,5 @@ function displayStudent(student_id){
     }
     student_id="student_"+student_id
     document.getElementById(student_id).style.display="block"
-}
-
-function add_button(){
-    span=document.createElement("span")
-    //'course_<%=@course.id%>'
-    span.setAttribute("id","button_5")
-    to_append_to=document.getElementById("all_courses")
-    button=document.createElement("button")
-    button.setAttribute("type","button")
-    button.setAttribute("class","no_border")
-    button.setAttribute("onclick","displayCourse(5)")
-    image=document.createElement("img")
-    image.setAttribute("src","assets/pokeball_icon.png")
-    image.setAttribute("class","button_size")
-    button.appendChild(image)
-    span.appendChild(button)
-    span.innerHTML+="did it"
-    to_append_to.appendChild(span)
 }
 

@@ -1,0 +1,18 @@
+<%if @show%>
+    <div class="instructor_view show" id="instructor_<%=instructor.id%>">
+      <% @show=false %>
+<% else %>
+    <div class="instructor_view" id="instructor_<%=instructor.id%>">
+<% end %>
+      <h2><%=instructor.first_name%> <%=instructor.last_name%></h2>
+      <%= form_with model: instructor do |form| %>
+        First Name:<%= form.text_field :first_name,  placeholder: "First name"%><br>
+        Last Name:<%= form.text_field :last_name,  placeholder: "Last name"%><br>
+        Date of Birth: <%= form.date_select(:age, {order: [:month, :day, :year], start_year: Date.today.year-150, end_year: Date.today.year} ) %><br>
+        Salary: <%= form.text_field :salary, placeholder: "Salary" %><br>
+        Education: <%= form.select :education, ['Highschool','College', 'Masters', 'PHD']%><br>
+        Cohort: <%= form.select :cohort_id, options_for_select(@cohorts, instructor.id)%><br>
+        <%= form.submit "Update"%><br>
+        <button type='button'> <%= link_to "Delete", instructor_path(instructor), method: :delete, remote: true, data: { confirm: "You sure?" } %></button><br>
+      <% end %>
+    </div>

@@ -2,6 +2,7 @@
 <div class="instructors_container">
   <div class="all_instructors">
     <h1>List of Instructors</h1>
+    <div id="buttons">
         <% @instructors.each do |instructor| %>
           <span id="button_<%=instructor.id%>">
           <button type="button" class='no_border' onclick="displayInstructor(<%=instructor.id%>)"> <%= image_tag 'pokeball_icon.png', class:"button_size" %> </button>
@@ -9,6 +10,7 @@
           <%= instructor.last_name %><br>
           </span>
         <% end %>
+      </div>
     <!-- available_cohorts contains all the cohorts that do not have instructors -->
       <% available_cohorts=[] %>
       <% @cohorts.each do |cohort|%>
@@ -29,28 +31,13 @@
       <% end %>
     </div>
 
-    <div class = "edit_instructors">
+    <div id="edit_instructors">
       <h1>View Instructor</h1>
-      <%first=true%>
+      <%@show=true%>
         <% @instructors.each do |instructor| %>
-        <%if first%>
-          <div class="instructor_view first" id="instructor_<%=instructor.id%>">
-          <% first=false %>
-        <% else %>
-          <div class="instructor_view" id="instructor_<%=instructor.id%>">
+            <% @instructor=instructor %>
+
+            <%= render 'edit', {instructor: @instructor} %>
         <% end %>
-            <h2><%=instructor.first_name%> <%=instructor.last_name%></h2>
-            <%= form_with model: instructor do |form| %>
-              First Name:<%= form.text_field :first_name,  placeholder: "First name"%><br>
-              Last Name:<%= form.text_field :last_name,  placeholder: "Last name"%><br>
-              Date of Birth: <%= form.date_select(:age, {order: [:month, :day, :year], start_year: Date.today.year-150, end_year: Date.today.year} ) %><br>
-              Salary: <%= form.text_field :salary, placeholder: "Salary" %><br>
-              Education: <%= form.select :education, ['Highschool','College', 'Masters', 'PHD']%><br>
-              Cohort: <%= form.select :cohort_id, options_for_select(@cohorts, instructor.id)%><br>
-              <%= form.submit "Update"%><br>
-              <button type='button'> <%= link_to "Delete", instructor_path(instructor), method: :delete, remote: true, data: { confirm: "You sure?" } %></button><br>
-            <% end %>
-          </div>
-          <% end %>
     </div>
 </div>

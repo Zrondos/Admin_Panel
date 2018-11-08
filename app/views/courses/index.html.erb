@@ -1,5 +1,4 @@
 <%= image_tag 'pikachu.jpg', class:'pikachu'%>
-<button type="button" onclick="add_button()">suh</button>
 <div class="courses_container">
   <div id="all_courses">
     <h1>List of Courses</h1>
@@ -24,7 +23,9 @@
       <% @show=true %>
       <% @courses.each do |course| %>
         <% @course = course%>
+
           <%= render 'edit', {course: @course}  %>
+          
       <% end %>
   </div>
 </div>

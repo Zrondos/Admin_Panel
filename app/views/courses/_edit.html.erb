@@ -4,7 +4,6 @@
         <% else%>
           <div class="course_view" id="course_<%=course.id%>">
         <% end %>
-
           <h2> <%=course.name%> </h2>
           <%= form_with model: course do |form| %>
             Course Name: <%= form.text_field :name,  placeholder: "Course Name"%><br>

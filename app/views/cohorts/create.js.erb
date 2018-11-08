@@ -1,16 +1,17 @@
 document.getElementsByClassName("show")[0].style.display="none"
-$("#edit_courses").append("<%= escape_javascript("#{render partial: 'edit', locals: { course: @course }}").html_safe %>");
+$("#edit_cohorts").append("<%= escape_javascript("#{render partial: 'edit', locals: { cohort: @cohort }}").html_safe %>");
+
 span=document.createElement("span")
-span.setAttribute("id","button_<%=@course.id%>")
+span.setAttribute("id","button_<%=@instructor.id%>")
 to_append_to=document.getElementById("buttons")
 button=document.createElement("button")
 button.setAttribute("type","button")
 button.setAttribute("class","no_border")
-button.setAttribute("onclick","displayCourse(<%=@course.id%>)")
+button.setAttribute("onclick","displayInstructor(<%=@instructor.id%>)")
 image=document.createElement("img")
 image.setAttribute("src","assets/pokeball_icon.png")
 image.setAttribute("class","button_size")
 button.appendChild(image)
 span.appendChild(button)
-span.innerHTML+="<%=@course.name%> <br>"
+span.innerHTML+="<%=@instructor.first_name%> <%=@instructor.last_name%>"
 to_append_to.appendChild(span)

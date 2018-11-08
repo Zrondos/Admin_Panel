@@ -51,6 +51,9 @@
                                     <% cohorts_to_select.slice!(i) %>
                                 <% end %>
                             <% end %>
+                            <% if cohorts_to_select[-1][1]==cohort.id%>
+                            <%cohorts_to_select=cohorts_to_select[0...-1]%>
+                        <%end %>
                         <% end %>
                     <!----------------------------------------------------------->
  

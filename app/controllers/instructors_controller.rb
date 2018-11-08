@@ -11,6 +11,7 @@ class InstructorsController < ApplicationController
     end
 
     def create
+        @cohorts=Cohort.all.map{|c| [c.name, c.id]}
         @instructor = Instructor.create(
             first_name: params[:instructor][:first_name],
             last_name: params[:instructor][:last_name],
@@ -19,7 +20,11 @@ class InstructorsController < ApplicationController
             education: params[:instructor][:education],
             cohort_id: params[:instructor][:cohort_id]
         )
-        redirect_to '/instructors'
+        respond_to do |format|
+            @show=true
+            format.html {redirect_to instructors_path}
+            format.js  
+        end
     end
 
     def update

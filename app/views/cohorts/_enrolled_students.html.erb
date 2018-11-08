@@ -1,0 +1,10 @@
+<%if @show%>
+                        <div class="students_cohorts_view show" id="students_cohorts_<%= cohort.id %>">
+                        <%@show=false%>
+                    <% else %>
+                        <div class="students_cohorts_view" id="students_cohorts_<%= cohort.id %>">
+                    <% end %>
+                        <% cohort.students.each do |student| %>
+                            <%=student.first_name%> <%=student.last_name%><br>
+                        <% end %>
+                    </div>

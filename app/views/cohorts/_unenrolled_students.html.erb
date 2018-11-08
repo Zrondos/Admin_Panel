@@ -1,0 +1,15 @@
+<% if @show %>
+                        <div class="add_students_view show" id="add_students_<%=cohort.id%>">
+                        <%@show=false%>
+                    <% else %>
+                        <div class="add_students_view" id="add_students_<%=cohort.id%>">
+                    <% end %>
+                            <%= form_with url: url_for(action:'create_students_cohort')  do |form| %>
+                                <%= form.select(:students_ids, options_for_select(students_to_select), 
+                                        { prompt: 'Add Students'},
+                                        { :multiple => true}
+                                        ) %>
+                                <%= form.hidden_field :cohort_id, value: cohort.id %>
+                                <%= form.submit%>
+                            <% end %>
+                        </div>

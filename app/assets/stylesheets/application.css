@@ -184,7 +184,7 @@ body {
     padding-bottom: 20px;
 }
 
-.edit_cohorts{
+#edit_cohorts{
     width: 33%;
     border-left: 2px solid black;
     border-right: 2px solid black;
@@ -237,7 +237,7 @@ body {
     padding-bottom: 20px;
 }
 
-.edit_instructors{
+#edit_instructors{
     width: 50%;
     padding-left: 10px;
     padding-bottom: 20px;
