@@ -1,0 +1,25 @@
+        <%if @show%>
+          <div class="course_view show" id="course_<%=course.id%>">
+          <%@show=false%>
+        <% else%>
+          <div class="course_view" id="course_<%=course.id%>">
+        <% end %>
+
+          <h2> <%=course.name%> </h2>
+          <%= form_with model: course do |form| %>
+            Course Name: <%= form.text_field :name,  placeholder: "Course Name"%><br>
+            Hours: <%= form.text_field :hours,  placeholder: "Hours"%><br>
+            <%= form.submit %>
+          <% end %> 
+          
+          <button type='button'> <%= link_to "Delete", course_path(course), method: :delete, remote: true, data: { confirm: "You sure?" } %></button><br>
+          <h2>Cohorts</h2>
+            <div class="list_of_cohorts">
+              <ol>
+              <%course.cohorts.each do |cohort|%>
+                <li><%= cohort.name %></li>
+              <% end %>
+              </ol>
+            </div>
+        </div>
+      

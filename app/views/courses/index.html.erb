@@ -1,44 +1,28 @@
 <%= image_tag 'pikachu.jpg', class:'pikachu'%>
+
 <div class="courses_container">
-  <div class="all_courses">
+  <div idc="all_courses">
     <h1>List of Courses</h1>
-      <% @courses.each do |course| %>
-        
+      <% @courses.each do |course| %> 
         <span id="button_<%=course.id%>"> 
           <button type="button" class='no_border' onclick="displayCourse(<%=course.id%>)"> <%= image_tag 'pokeball_icon.png', class:"button_size" %> </button>
           <%= course.name %><br>
         </span>
-        
       <% end %>
     <h2>Create New Course</h2>
       <%= form_with model: Course.new do |form| %>
         Course: <%= form.text_field :name,  placeholder: "Course Name"%> <br>
         Hours: <%= form.text_field :hours,  placeholder: "Hours"%> <br>
-        <%= form.submit %>
+        <%= form.submit %> 
       <% end %>
   </div>
 
   <div class="edit_courses">
-      <h1>View Course</h1>
+    <h1>View Course</h1>
+      <% @show=true %>
       <% @courses.each do |course| %>
-        <div class="course_view" id="course_<%=course.id%>">
-          <h2> <%=course.name%> </h2>
-          <%= form_with model: course do |form| %>
-            Course Name: <%= form.text_field :name,  placeholder: "Course Name"%><br>
-            Hours: <%= form.text_field :hours,  placeholder: "Hours"%><br>
-            <%= form.submit %>
-          <% end %> 
-          
-          <button type='button'> <%= link_to "Delete", course_path(course), method: :delete, remote: true, data: { confirm: "You sure?" } %></button><br>
-          <h2>Cohorts</h2>
-            <div class="list_of_cohorts">
-              <ol>
-              <%course.cohorts.each do |cohort|%>
-                <li><%= cohort.name %></li>
-              <% end %>
-              </ol>
-            </div>
-        </div>
+        <% @course = course%>
+          <%= render 'edit', {course: @course}  %>
       <% end %>
   </div>
 </div>

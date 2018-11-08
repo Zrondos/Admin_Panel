@@ -128,10 +128,6 @@ body {
     display: none;
 }
 
-#course_1{
-    display: block;
-}
-
 .all_courses{
     border-right: 2px solid black;
     width: 49%;
@@ -172,10 +168,6 @@ body {
 }
 .cohort_view{
     display: none;
-}
-
-#cohort_1{
-    display: block;
 }
 
 .students_cohorts_view{
@@ -224,11 +216,6 @@ body {
     display: none;
 } 
 
-#add_students_1{
-    display: block;
-}
-
-
 /*Instructor CSS */
 .instructors_container{
     border: 2px solid black;
@@ -242,9 +229,6 @@ body {
     display: none;
 }
 
-#instructor_1{
-    display:block;
-}
 
 .all_instructors{
     border-right: 2px solid black;
@@ -290,4 +274,8 @@ body {
     height: 100%;
     padding-left: 10px;
     padding-bottom: 20px;
+}
+
+.first{
+    display: block;
 }

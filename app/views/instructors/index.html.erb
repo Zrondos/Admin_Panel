@@ -31,8 +31,14 @@
 
     <div class = "edit_instructors">
       <h1>View Instructor</h1>
+      <%first=true%>
         <% @instructors.each do |instructor| %>
+        <%if first%>
+          <div class="instructor_view first" id="instructor_<%=instructor.id%>">
+          <% first=false %>
+        <% else %>
           <div class="instructor_view" id="instructor_<%=instructor.id%>">
+        <% end %>
             <h2><%=instructor.first_name%> <%=instructor.last_name%></h2>
             <%= form_with model: instructor do |form| %>
               First Name:<%= form.text_field :first_name,  placeholder: "First name"%><br>

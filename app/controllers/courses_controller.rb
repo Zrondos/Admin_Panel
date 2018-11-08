@@ -2,6 +2,7 @@ class CoursesController < ApplicationController
 
     def index
         @courses=Course.all.order('created_at ASC')
+        
     end
 
     def new
@@ -13,7 +14,11 @@ class CoursesController < ApplicationController
             name: params[:course][:name],
             hours: params[:course][:hours]
         )
-        redirect_to '/courses'
+        respond_to do |format|
+            @show=true
+            format.html {redirect_to courses_path}
+            format.js  
+        end
     end
 
     def update
@@ -21,7 +26,11 @@ class CoursesController < ApplicationController
         @course.update(name: params[:course][:name],
         hours: params[:course][:hours]
         )
-        redirect_to '/courses'
+        respond_to do |format|
+            @show=true
+            format.html {redirect_to courses_path}
+            format.js  
+        end
     end
 
     def destroy
@@ -29,7 +38,7 @@ class CoursesController < ApplicationController
         @course.destroy
         respond_to do |format|
             format.html {redirect_to courses_path}
-            format.js 
+            format.js  
         end
     end
 

@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery
 //= require activestorage
 //= require turbolinks
 //= require_tree .
@@ -78,3 +79,7 @@ function displayStudent(student_id){
     student_id="student_"+student_id
     document.getElementById(student_id).style.display="block"
 }
+
+
+
+

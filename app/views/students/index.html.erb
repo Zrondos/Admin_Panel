@@ -22,8 +22,14 @@
 
     <div class="edit_students">
         <h1>View Students</h1>
+        <% first=true %>
             <% @students.each do |student| %>
-                <div class="student_view" id="student_<%=student.id%>">
+                <% if first %>
+                    <div class="student_view first" id="student_<%=student.id%>">
+                    <% first=false%>
+                <% else %>
+                    <div class="student_view" id="student_<%=student.id%>">
+                <% end %>
                     <h3><%=student.first_name%> <%=student.last_name%></h3>
                     <%= form_with model: student do |form| %>
                         <%= form.text_field :first_name,  placeholder: "First name"%><br>
