@@ -17,5 +17,7 @@ Rails.application.routes.draw do
   post '/add_students_to_cohort', to: 'cohorts#create_students_cohort', as: :add_students_to_cohort
   post '/remove_students', to: 'students#remove'
   post '/add_cohorts_students', to: 'students#create_cohorts_student'
+
+  get '/reseed_database', to: 'main#reseed_database'
   
 end
