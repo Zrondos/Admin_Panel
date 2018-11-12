@@ -25,7 +25,7 @@ nav{
     padding-left: 15px;
     margin-left: -61px;
     margin-right: 43px;
-    font-family: 'VT323', monospace;
+    font-family: 'Montserrat', sans-serif;
 }
 
 a:link{
@@ -137,8 +137,8 @@ body {
 }
 
 .button_size{
-    height: 15px;
-    width: 15px;
+    height: 31px;
+    width: 31px;
 }
 
 .no_border{
@@ -279,4 +279,8 @@ body {
 
 .show{
     display: block;
+}
+
+input,select{
+    border-radius:5px;
 }
