@@ -4,13 +4,15 @@
 
 <div class="cohorts_container">
     <div class="all_cohorts">
-        <h1>List of Cohorts</h1>
-            <% @cohorts.each do |cohort|%>
-            <span id="button_<%=cohort.id%>">
-                <button type="button" class='no_border' onclick="displayCohort(<%=cohort.id%>)"> <%= image_tag 'pokeball_icon.png', class:"button_size" %> </button>
-                <%= cohort.name %><br>
-            </span>
-            <% end %>
+        <div id="buttons">
+            <h1>List of Cohorts</h1>
+                <% @cohorts.each do |cohort|%>
+                <span id="button_<%=cohort.id%>">
+                    <button type="button" class='no_border' onclick="displayCohort(<%=cohort.id%>)"> <%= image_tag 'pokeball_icon.png', class:"button_size" %> </button>
+                    <%= cohort.name %><br>
+                </span>
+                <% end %>
+        </div>
         <h2>Create New Cohort</h2>
         
             <%= form_with model: Cohort.new do |form| %>
@@ -30,8 +32,8 @@
                 <%= render 'edit', {cohort: @cohort}  %>
             <% end %>
     </div>
-    <div class="students">
-        <div class="enrolled_students">
+    <div id="students">
+        <div id="enrolled_students">
             <h2>Enrolled Students</h2>
             <% @show=true %>
                 <% @cohorts.each do |cohort| %>
@@ -44,7 +46,7 @@
         </div>
         
 
-        <div class="unenrolled_students">
+        <div id="unenrolled_students">
             <h2>Unenrolled Students</h2>
                 <% @show=true %>
             
@@ -66,6 +68,7 @@
                     <% @students_to_select=students_to_select %>
                     
                     <%= render 'unenrolled_students', {cohort: @cohort, students_to_select: @students_to_select}%>
+                    
                     
                 <% end %>      
         </div> 

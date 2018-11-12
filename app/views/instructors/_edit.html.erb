@@ -12,7 +12,7 @@
         Salary: <%= form.text_field :salary, placeholder: "Salary" %><br>
         Education: <%= form.select :education, ['Highschool','College', 'Masters', 'PHD']%><br>
         Cohort: <%= form.select :cohort_id, options_for_select(@cohorts, instructor.id)%><br>
-        <%= form.submit "Update"%><br>
+        <%= form.submit data: { confirm: 'Instructor updated' }%><br>
         <button type='button'> <%= link_to "Delete", instructor_path(instructor), method: :delete, remote: true, data: { confirm: "You sure?" } %></button><br>
       <% end %>
     </div>

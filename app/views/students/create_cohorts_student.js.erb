@@ -1,0 +1,3 @@
+document.getElementById("student_<%=@student.id%>").remove();
+$("#edit_students").append("<%= escape_javascript("#{render partial: 'edit', locals: { student: @student}}").html_safe %>");
+document.getElementById("student_<%=@student.id%>").classList.add("show");

@@ -3,6 +3,7 @@ class StudentsController < ApplicationController
     def index
         @students=Student.all.order('created_at ASC')
         @cohorts=Cohort.all.map{|c| [c.name, c.id]}
+        @show=true
     end
 
     def new
@@ -10,12 +11,19 @@ class StudentsController < ApplicationController
     end
 
     def create
+        
+        @cohorts=Cohort.all.map{|c| [c.name, c.id]}
+        @students=Student.all.order('created_at ASC')
         @student=Student.create(first_name: params[:student][:first_name],
         last_name: params[:student][:last_name], 
         age: params[:student][:age] ,
         education: params[:student][:education]
         )
-        redirect_to '/students'
+        respond_to do |format|
+            @show=true
+            format.html {redirect_to students_path}
+            format.js 
+        end
     end
 
     def update
@@ -48,4 +56,23 @@ class StudentsController < ApplicationController
         end
     end
 
+    def create_cohorts_student
+        puts "!!!!!!!!!"
+        array=params[:cohorts]
+        array.map!(&:to_i)
+        array=array[1..-1]
+        array.each do |cohort_id|
+            StudentsCohort.create(
+                cohort_id: cohort_id,
+                student_id: params[:student_id]  
+            )
+        end
+        
+        @student=Student.find(params[:student_id])
+        @cohorts=Cohort.all.map{|c| [c.name, c.id]}
+        respond_to do |format|
+            
+            format.js 
+        end
+    end
 end

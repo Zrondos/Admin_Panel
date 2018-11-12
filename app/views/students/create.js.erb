@@ -1,0 +1,2 @@
+document.getElementsByClassName("show")[0].style.display="none"
+$("#edit_students").append("<%= escape_javascript("#{render partial: 'edit', locals: { cohort: @cohort, student: @student }}").html_safe %>");

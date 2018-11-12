@@ -1,0 +1,11 @@
+document.getElementById("add_students_<%=@cohort.id%>").innerHTML=""
+document.getElementById("add_students_<%=@cohort.id%>").remove();
+$("#unenrolled_students").append("<%= escape_javascript("#{render partial: 'unenrolled_students', locals: { cohort: @cohort, students_to_select: @students_to_select}}").html_safe %>");
+document.getElementById("add_students_<%=@cohort.id%>").classList.add("show");
+document.getElementById("students_cohorts_<%=@cohort.id%>").remove()
+$("#enrolled_students").append("<%= escape_javascript("#{render partial: 'enrolled_students', locals: { cohort: @cohort}}").html_safe %>");
+document.getElementById("students_cohorts_<%=@cohort.id%>").classList.add("show");
+console.log("something")
+
+
+

@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   post '/add_students_to_cohort/:id', to: 'students_cohorts#create_students_cohort'
   post '/add_students_to_cohort', to: 'cohorts#create_students_cohort', as: :add_students_to_cohort
   post '/remove_students', to: 'students#remove'
-  post '/add_cohorts_students', to: 'students_cohorts#create_cohorts_student'
+  post '/add_cohorts_students', to: 'students#create_cohorts_student'
   
 end

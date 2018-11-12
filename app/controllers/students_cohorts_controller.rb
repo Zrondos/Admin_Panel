@@ -22,6 +22,7 @@ class StudentsCohortsController < ApplicationController
                 student_id: params[:student_id]  
             )
         end
+       
         redirect_to students_path
     end
 end

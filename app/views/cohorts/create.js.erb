@@ -1,17 +1,23 @@
-document.getElementsByClassName("show")[0].style.display="none"
+//shows=document.getElementsByClassName("show")[0].style.display="none"
+shows=document.getElementsByClassName("show")
+for (var i=0; i<shows.length; i++){
+    shows[i].style.display="none"
+}
 $("#edit_cohorts").append("<%= escape_javascript("#{render partial: 'edit', locals: { cohort: @cohort }}").html_safe %>");
-
+$("#enrolled_students").append("<%= escape_javascript("#{render partial: 'enrolled_students', locals: { cohort: @cohort}}").html_safe %>");
+$("#unenrolled_students").append("<%= escape_javascript("#{render partial: 'unenrolled_students', locals: { cohort: @cohort, students_to_select: @students_to_select}}").html_safe %>");
+document.getElementById("add_students_<%=@cohort.id%>").style.display="block"
 span=document.createElement("span")
-span.setAttribute("id","button_<%=@instructor.id%>")
+span.setAttribute("id","button_<%=@cohort.id%>")
 to_append_to=document.getElementById("buttons")
 button=document.createElement("button")
 button.setAttribute("type","button")
 button.setAttribute("class","no_border")
-button.setAttribute("onclick","displayInstructor(<%=@instructor.id%>)")
+button.setAttribute("onclick","displayCohort(<%=@cohort.id%>)")
 image=document.createElement("img")
 image.setAttribute("src","assets/pokeball_icon.png")
 image.setAttribute("class","button_size")
 button.appendChild(image)
 span.appendChild(button)
-span.innerHTML+="<%=@instructor.first_name%> <%=@instructor.last_name%>"
+span.innerHTML+="<%=@cohort.name%> <br>"
 to_append_to.appendChild(span)

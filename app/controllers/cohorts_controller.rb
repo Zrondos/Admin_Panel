@@ -12,11 +12,19 @@ class CohortsController < ApplicationController
     end
 
     def create
+        @students=Student.all.map{|student| [student.first_name, student.id]}
+        @students_to_select = @students.dup
+        @cohorts=Cohort.all.order('created_at ASC')
+        @courses=Course.all.map{ |c| [c.name, c.id]}
         @cohort=Cohort.create(name: params[:cohort][:name],
         start_date: params[:cohort][:start_date],
         end_date: params[:cohort][:end_date],
         course_id: params[:cohort][:course_id])
-        redirect_to '/cohorts'
+        respond_to do |format|
+            @show=true
+            format.html {redirect_to instructors_path}
+            format.js  
+        end
     end
 
     # def edit
@@ -36,7 +44,7 @@ class CohortsController < ApplicationController
         start_date: params[:cohort][:start_date],
         end_date: params[:cohort][:end_date],
         course_id: params[:cohort][:course_id])
-        redirect_to '/cohorts'
+        
     end
 
     def destroy
@@ -48,6 +56,10 @@ class CohortsController < ApplicationController
     end
 
     def create_students_cohort
+        puts "!!!!!!!!!"
+        @students=Student.all.map{|student| [student.first_name, student.id]}
+        @students_to_select = @students.dup
+        @cohorts=Cohort.all.order('created_at ASC')
         array=params[:students_ids]
         array.map!(&:to_i)
         array=array[1..-1]
@@ -57,6 +69,19 @@ class CohortsController < ApplicationController
             cohort_id: params[:cohort_id]
         )
         end
-        redirect_to '/cohorts'
+        @cohort=Cohort.find(params[:cohort_id])
+        @cohort.students.each do |student|
+            for i in 0...@students_to_select.length-1
+                if student.id == @students_to_select[i][1]
+                    @students_to_select.slice!(i) 
+                end 
+            end 
+            if @students_to_select[-1][1]==student.id
+                @students_to_select=@students_to_select[0...-1]
+            end
+        end
+        respond_to do |format|
+            format.js 
+        end
     end
 end

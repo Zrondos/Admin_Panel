@@ -192,7 +192,7 @@ body {
     padding-bottom: 20px;
 }
 
-.students{
+#students{
     width: 33%;
     padding-left: 10px;
     padding-bottom: 20px;
@@ -200,13 +200,13 @@ body {
     flex-direction: column;
 }   
 
-.enrolled_students{
+#enrolled_students{
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.unenrolled_students{
+#unenrolled_students{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -269,7 +269,7 @@ body {
     padding-bottom: 20px;
 }
 
-.edit_students{
+#edit_students{
     width: 50%;
     height: 100%;
     padding-left: 10px;

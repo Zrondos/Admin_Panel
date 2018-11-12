@@ -11,7 +11,7 @@
                             End Date:<%= form.date_field :end_date,  placeholder: "End date"%><br>
                             Course: <%= form.select :course_id,  options_for_select(@courses, @cohort.course_id)%><br>
 
-                            <%= form.submit %><br>
+                            <%= form.submit data: { confirm: 'Cohort updated' }%><br>
                         <!-- <%= link_to "Delete", @cohort, method: :delete, data: { confirm: "You sure?" } %> -->
                             <button type='button'> <%= link_to "Delete", cohort_path(cohort), method: :delete, remote: true, data: { confirm: "You sure?" } %></button><br>
                         <% end %>
