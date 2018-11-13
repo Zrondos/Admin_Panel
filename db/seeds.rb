@@ -7,12 +7,12 @@ Course.create(name: 'Uneven Bars',
 Cohort.create(name: 'Rio 2016',
         start_date: Time.now,
         end_date: Time.now,
-        course_id: 1)
+        course_id: Course.first.id)
 
 Cohort.create(name: 'London 2012',
         start_date: Time.now,
         end_date: Time.now,
-        course_id: 1)
+        course_id: Course.last.id)
 
 Instructor.create(first_name: 'Marta',
                 last_name:'Karolyi',
@@ -38,11 +38,11 @@ Student.create(first_name: 'Kyla',
                 age: 20,
                 education: 'None')
 
-StudentsCohort.create(student_id: 1,
-                      cohort_id: 1)
+StudentsCohort.create(student_id: Student.first.id,
+                      cohort_id: Cohort.first.id)
 
-StudentsCohort.create(student_id: 1,
-                      cohort_id: 2)
+StudentsCohort.create(student_id: Student.first.id,
+                      cohort_id: Cohort.last.id)
 
-StudentsCohort.create(student_id: 2,
-                      cohort_id: 1)
+StudentsCohort.create(student_id: Student.last.id,
+                      cohort_id: Cohort.first.id)
