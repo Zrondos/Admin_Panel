@@ -5,7 +5,7 @@
     <div id="buttons">
         <% @instructors.each do |instructor| %>
           <span id="button_<%=instructor.id%>">
-          <button type="button" class='no_border' onclick="displayInstructor(<%=instructor.id%>)"> <%= image_tag 'medal.png', class:"button_size" %> </button>
+          <button type="button" class='no_border' onclick="displayInstructor(<%=instructor.id%>)"> <img class="button_size" src="assets/medal.png"> </button>
           <%= instructor.first_name %>
           <%= instructor.last_name %><br>
           </span>

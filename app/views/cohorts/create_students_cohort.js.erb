@@ -5,7 +5,7 @@ document.getElementById("add_students_<%=@cohort.id%>").classList.add("show");
 document.getElementById("students_cohorts_<%=@cohort.id%>").remove()
 $("#enrolled_students").append("<%= escape_javascript("#{render partial: 'enrolled_students', locals: { cohort: @cohort}}").html_safe %>");
 document.getElementById("students_cohorts_<%=@cohort.id%>").classList.add("show");
-console.log("something")
+
 
 
 
