@@ -6,7 +6,7 @@
             <h1>List of Cohorts</h1>
                 <% @cohorts.each do |cohort|%>
                 <span id="button_<%=cohort.id%>">
-                    <button type="button" class='no_border' onclick="displayCohort(<%=cohort.id%>)"> <%= image_tag 'pokeball_icon.png', class:"button_size" %> </button>
+                    <button type="button" class='no_border' onclick="displayCohort(<%=cohort.id%>)"> <%= image_tag 'medal.png', class:"button_size" %> </button>
                     <%= cohort.name %><br>
                 </span>
                 <% end %>
