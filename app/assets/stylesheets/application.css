@@ -72,8 +72,23 @@ nav a {
     top: 14px;
 }
 
+.organize_team{
+    margin-left: 765px;
+    margin-top: -65px;
+    font-size: 23px;
+}
+
+li{
+    margin-left: 35px;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
+}
+
+.title{
+    margin-top: 0px;
+    font-size: 30px;
 }
 
 .pokeball{
@@ -97,8 +112,9 @@ body {
 .background{
     z-index: -1;
     width: 100%;
-    height: 90%;
+    height: 77%;
     position: absolute;
+    top: 160px;
 }
 
 
