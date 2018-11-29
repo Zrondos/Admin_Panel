@@ -1,4 +1,4 @@
-#Welcome to the USA Gymnastics Admin Panel
+# Welcome to the USA Gymnastics Admin Panel
 Manage the USA gymnastics team by creating gymnasts, coaches, teams and events.
 
 Somethings about the app
