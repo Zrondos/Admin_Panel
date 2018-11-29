@@ -1,7 +1,7 @@
 <%= image_tag 'background.jpg', class:'background_2'%>
 <div class="instructors_container">
   <div class="all_instructors">
-    <h1>List of Instructors</h1>
+    <h1>List of Coaches</h1>
     <div id="buttons">
         <% @instructors.each do |instructor| %>
           <span id="button_<%=instructor.id%>">
@@ -19,20 +19,20 @@
         <% end %>
       <% end %>
 
-    <h2>Create New Instructor</h2>
+    <h2>Create New Coach</h2>
       <%= form_with model: Instructor.new do |form| %>
-            First Name:<%= form.text_field :first_name,  placeholder: "First name"%><br>
-            Last Name:<%= form.text_field :last_name,  placeholder: "Last name"%><br>
+            First Name: <%= form.text_field :first_name,  placeholder: "First name"%><br>
+            Last Name: <%= form.text_field :last_name,  placeholder: "Last name"%><br>
             Birthday: <%= form.date_select(:age, {order: [:month, :day, :year], start_year: Date.today.year-150, end_year: Date.today.year} ) %><br>
             Salary: <%= form.text_field :salary, placeholder: "Salary" %><br>
-            Education: <%= form.select :education, ['Highschool','College', 'Masters', 'PHD']%><br>
-            <%= form.select :cohort_id, options_for_select(available_cohorts, @instructor.id)%><br>
+            Specialty: <%= form.select :education, ['Vault','Floor', 'Uneven Bars', 'Balance Beam']%><br>
+            Team: <%= form.select :cohort_id, options_for_select(available_cohorts, @instructor.id)%><br>
             <%= form.submit "Create" %>
       <% end %>
     </div>
 
     <div id="edit_instructors">
-      <h1>View/Edit Instructor</h1>
+      <h1>View/Edit Coach</h1>
       <%@show=true%>
         <% @instructors.each do |instructor| %>
             <% @instructor=instructor %>

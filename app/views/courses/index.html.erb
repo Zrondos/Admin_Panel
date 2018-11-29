@@ -1,7 +1,7 @@
 <%= image_tag 'background.jpg', class:'background_2'%>
 <div class="courses_container">
   <div id="all_courses">
-    <h1>List of Courses</h1>
+    <h1>List of Events</h1>
       <div id="buttons">
       <% @courses.each do |course| %> 
         <span id="button_<%=course.id%>"> 
@@ -10,16 +10,16 @@
         </span>
       <% end %>
       </div>
-    <h2>Create New Course</h2>
+    <h2>Create New Event</h2>
       <%= form_with model: Course.new do |form| %>
-        Course: <%= form.text_field :name,  placeholder: "Course Name"%> <br>
-        Hours: <%= form.text_field :hours,  placeholder: "Hours"%> <br>
-        <%= form.submit %> 
+        Event: <%= form.text_field :name,  placeholder: "Event Name"%> <br>
+        Training Hours: <%= form.text_field :hours,  placeholder: "Hours"%> <br>
+        <%= form.submit "Create Event" %> 
       <% end %>
   </div>
 
   <div id="edit_courses">
-    <h1>View/Edit Course</h1>
+    <h1>View/Edit Event</h1>
       <% @show=true %>
       <% @courses.each do |course| %>
         <% @course = course%>

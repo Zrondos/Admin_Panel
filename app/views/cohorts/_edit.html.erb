@@ -7,11 +7,11 @@
                     <h2><%= cohort.name %></h2>
                         <%= form_with model: cohort do |form| %>
                             Name: <%= form.text_field :name,  placeholder: "Cohort Name"%><br>
-                            Start Date:<%= form.date_field :start_date,  placeholder: "Start date"%><br>
-                            End Date:<%= form.date_field :end_date,  placeholder: "End date"%><br>
-                            Course: <%= form.select :course_id,  options_for_select(@courses, @cohort.course_id)%><br>
+                            Start Date: <%= form.date_field :start_date,  placeholder: "Start date"%><br>
+                            End Date: <%= form.date_field :end_date,  placeholder: "End date"%><br>
+                            Strongest Event: <%= form.select :course_id,  options_for_select(@courses, @cohort.course_id)%><br>
 
-                            <%= form.submit data: { confirm: 'Cohort updated' }%><br>
+                            <%= form.submit "Update Team", data: { confirm: 'Team updated' }%><br>
                         <!-- <%= link_to "Delete", @cohort, method: :delete, data: { confirm: "You sure?" } %> -->
                             <button type='button'> <%= link_to "Delete", cohort_path(cohort), method: :delete, remote: true, data: { confirm: "You sure?" } %></button><br>
                         <% end %>

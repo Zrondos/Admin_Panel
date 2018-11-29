@@ -1,27 +1,29 @@
 <%= image_tag 'background.jpg', class:'background_2'%>
 <div class="students_container">
     <div class="all_students">
-        <h1>List of Students</h1>
-        <% @students.each do |student| %>
-        <span id="button_<%=student.id%>">
-            <button type="button" class='no_border' onclick="displayStudent(<%=student.id%>)"> <%= image_tag 'medal.png', class:"button_size" %> </button>
-            <%= student.first_name%> <%= student.last_name%> <br>
-        </span>
-        <% end %>
-        <h1>Create New Student</h1>
+        <h1>Gymnasts</h1>
+        <div id="buttons">
+            <% @students.each do |student| %>
+                <span id="button_<%=student.id%>">
+                    <button type="button" class='no_border' onclick="displayStudent(<%=student.id%>)"> <%= image_tag 'medal.png', class:"button_size" %> </button>
+                    <%= student.first_name%> <%= student.last_name%> <br>
+                </span>
+            <% end %>
+        </div>
+        <h1>Create New Gymnast</h1>
             <%= form_with model: Student.new do |form| %>
-                <%= form.text_field :first_name,  placeholder: "First name"%><br>
-                <%= form.text_field :last_name,  placeholder: "Last name"%><br>
-                Birthday
+                First Name: <%= form.text_field :first_name%><br>
+                Last Name: <%= form.text_field :last_name%><br>
+                Birthday:
                 <%= form.date_select(:age, {order: [:month, :day, :year], start_year: Date.today.year-150, end_year: Date.today.year} ) %><br>
-                <%= form.label :education %>
-                <%= form.select :education, ['Highschool','College', 'Masters', 'PHD']%><br>
-                <%= form.submit %>
+                Specialty: 
+                <%= form.select :education, ['Vault','Floor', 'Uneven Bars', 'Balance Beam']%><br>
+                <%= form.submit "Create Gymnast"%>
             <% end %>
     </div>
 
     <div id="edit_students">
-        <h1>View/Edit Students</h1>
+        <h1>View/Edit Gymnasts</h1>
             <% @students.each do |student| %>
                 <% @student=student %>
                 <%= render 'edit', {student: @student}  %>

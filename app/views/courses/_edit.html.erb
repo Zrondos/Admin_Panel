@@ -6,14 +6,14 @@
         <% end %>
           <h2> <%=course.name%> </h2>
           <%= form_with model: course do |form| %>
-            Course Name: <%= form.text_field :name,  placeholder: "Course Name"%><br>
-            Hours: <%= form.text_field :hours,  placeholder: "Hours"%><br>
-            <%= form.submit data: { confirm: 'Course updated' } %>
+            Event Name: <%= form.text_field :name,  placeholder: "Course Name"%><br>
+            Training Hours: <%= form.text_field :hours,  placeholder: "Hours"%><br>
+            <%= form.submit "Update Event", data: { confirm: 'Event updated' } %>
 
           <% end %> 
           
           <button type='button'> <%= link_to "Delete", course_path(course), method: :delete, remote: true, data: { confirm: "You sure?" } %></button><br>
-          <h2>Cohorts</h2>
+          <h2>Teams</h2>
             <div class="list_of_cohorts">
               <ol>
               <%course.cohorts.each do |cohort|%>

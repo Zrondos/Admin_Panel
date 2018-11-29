@@ -6,7 +6,7 @@
                     <% end %>
                             <%= form_with url: url_for(action:'create_students_cohort')  do |form| %>
                                 <%= form.select(:students_ids, options_for_select(students_to_select), 
-                                        { prompt: 'Add Students'},
+                                        { prompt: 'Add Gymnasts'},
                                         { :multiple => true}
                                         ) %>
                                 <%= form.hidden_field :cohort_id, value: cohort.id %>

@@ -3,7 +3,7 @@
 <div class="cohorts_container">
     <div class="all_cohorts">
         <div id="buttons">
-            <h1>List of Cohorts</h1>
+            <h1>List of Teams</h1>
                 <% @cohorts.each do |cohort|%>
                 <span id="button_<%=cohort.id%>">
                     <button type="button" class='no_border' onclick="displayCohort(<%=cohort.id%>)"> <%= image_tag 'medal.png', class:"button_size" %> </button>
@@ -11,19 +11,19 @@
                 </span>
                 <% end %>
         </div>
-        <h2>Create New Cohort</h2>
+        <h2>Create New Team</h2>
         
             <%= form_with model: Cohort.new do |form| %>
-                Name: <%= form.text_field :name,  placeholder: "Cohort Name"%><br>
-                Start Date:<%= form.date_field :start_date,  placeholder: "Start date"%><br>
-                End Date:<%= form.date_field :end_date,  placeholder: "End date"%><br>
-                Course: <%= form.select :course_id,  options_for_select(@courses, @cohort.course_id)%><br>
-                <%= form.submit %>
+                Name: <%= form.text_field :name,  placeholder: "Team Name"%><br>
+                Start Date: <%= form.date_field :start_date,  placeholder: "Start date"%><br>
+                End Date: <%= form.date_field :end_date,  placeholder: "End date"%><br>
+                Strongest Event: <%= form.select :course_id,  options_for_select(@courses, @cohort.course_id)%><br>
+                <%= form.submit "Create Team"%>
             <% end %>
     </div>
 
     <div id="edit_cohorts">
-        <h1>View/Edit Cohort</h1>
+        <h1>View/Edit Team</h1>
             <%@show=true%>
             <% @cohorts.each do |cohort| %>
                 <% @cohort=cohort %>
@@ -32,7 +32,7 @@
     </div>
     <div id="students">
         <div id="enrolled_students">
-            <h2>Enrolled Students</h2>
+            <h2>Team Gymnasts</h2>
             <% @show=true %>
                 <% @cohorts.each do |cohort| %>
                 
@@ -45,7 +45,7 @@
         
 
         <div id="unenrolled_students">
-            <h2>Unenrolled Students</h2>
+            <h2>Gymnasts to Add</h2>
                 <% @show=true %>
             
                 <!-- Students_to_select contains all the students that are not already enrolled in the chohort -->
