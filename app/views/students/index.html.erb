@@ -23,7 +23,7 @@
     </div>
 
     <div id="edit_students">
-        <h1>View/Edit Gymnasts</h1>
+        <h1>View/Edit Gymnast</h1>
             <% @students.each do |student| %>
                 <% @student=student %>
                 <%= render 'edit', {student: @student}  %>
