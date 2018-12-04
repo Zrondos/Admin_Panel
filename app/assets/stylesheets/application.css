@@ -28,6 +28,10 @@ nav{
     font-family: 'Montserrat', sans-serif;
 }
 
+.home_wrapper{
+    text-align: center;
+}
+
 a:link{
     text-decoration: none;
     color: black;
@@ -84,7 +88,7 @@ body {
 
 .title{
     margin-top: 0px;
-    font-size: 30px;
+    font-size: 45px;
 }
 
 .pokeball{
@@ -106,11 +110,7 @@ body {
     left: 910px;
 }
 .background{
-    z-index: -1;
-    width: 100%;
-    height: 77%;
-    position: absolute;
-    top: 160px;
+    width: 55%;
 }
 
 
