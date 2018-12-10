@@ -4,7 +4,7 @@
 
 [Try it out!](https://gymnastics-panel.herokuapp.com/)
 
-![alt text](/public/admin_panel.pg)
+![alt text](public/admin_panel.pg)
 
 
 The United States leads the world in Olympic Gymnastics. This administrative panel was developed for the USA Gymnastics Association to easily manage and visualize data regarding gymnasts, coaches, olympic teams and events. Administrators have the ability to register gymnasts and coaches.
