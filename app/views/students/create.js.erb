@@ -13,5 +13,5 @@ image.setAttribute("src","<%= asset_path 'medal.png' %>")
 image.setAttribute("class","button_size")
 button.appendChild(image)
 span.appendChild(button)
-span.innerHTML+="<%=@student.last_name%> <%=@student.last_name%> <br>"
+span.innerHTML+="<%=@student.first_name%> <%=@student.last_name%> <br>"
 to_append_to.appendChild(span)
