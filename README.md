@@ -1,14 +1,22 @@
 # Welcome to the USA Gymnastics Admin Panel
-Manage the USA gymnastics team by creating gymnasts, coaches, teams and events.
+[Demonstration](https://www.youtube.com/watch?v=RZgKACrUnts)
+
+
+[Try it out!](https://gymnastics-panel.herokuapp.com/)
+
+![alt text](/public/admin_panel.pg)
+
+
+The United States leads the world in Olympic Gymnastics. This administrative panel was developed for the USA Gymnastics Association to easily manage and visualize data regarding gymnasts, coaches, olympic teams and events. Administrators have the ability to register gymnasts and coaches.
 
 Somethings about the app
 * Built on Ruby on Rails
-* Database management via PostgreSQL and ActiveRecord for one_to_one, one_to_many and many_to_many relationships
-* AJAX used to update pages to reflect database changes without reloading page
-* Custom Raketask used to reset database after use
-* Herou Scheduler used to reset database daily at midnight
+* PostgreSQL and ActiveRecord utilized for complex database relationships creating  full CRUD functionality for all models
+* Created Custom Rake Tasks allowing user to make complex database alterations either through front end interaction or daily via Heroku Scheduler
+* Used MVC Model  via AJAX calls to reflect database changes without reloading the page
+* Utilized CSS Flexbox for mobile responsiveness
 
-[Test it out!](https://gymnastics-panel.herokuapp.com/)
+
 
 
 
